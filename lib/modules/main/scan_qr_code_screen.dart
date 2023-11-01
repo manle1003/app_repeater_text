@@ -1,6 +1,4 @@
 // ignore_for_file: deprecated_member_use
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_base/modules/main/components/drawer.dart';
 import 'package:flutter_getx_base/modules/main/scan_qr_code_controller.dart';
@@ -9,14 +7,13 @@ import 'package:flutter_getx_base/shared/widgets/custom_text_style.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
-import '../../../shared/utils/size_utils.dart';
-import '../../../shared/widgets/normal_button.dart';
+import '../../app_controller.dart';
+import '../../shared/widgets/input_field.dart';
 import 'components/constants_common.dart';
 
 class ScanQRCodeScreen extends GetView<ScanQrCodeController> {
   final ScanQrCodeController scanQrCodeController = Get.find();
+  final AppController appController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +29,10 @@ class ScanQRCodeScreen extends GetView<ScanQrCodeController> {
         ),
         body: Stack(
           children: [
-            _buildQrView(context),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 28, horizontal: 6),
+              padding: EdgeInsets.symmetric(
+                vertical: 28,
+              ),
               child: Column(
                 children: [
                   Row(
@@ -45,7 +43,7 @@ class ScanQRCodeScreen extends GetView<ScanQrCodeController> {
                           scale: 0.7,
                           child: SvgPicture.asset(
                             'assets/icons/ic_menu_vip.svg',
-                            color: ColorConstants.white,
+                            color: ColorConstants.black,
                           ),
                         ),
                         onPressed: () {
@@ -53,40 +51,170 @@ class ScanQRCodeScreen extends GetView<ScanQrCodeController> {
                         },
                       ),
                       Text(
-                        ConstantsCommon.scanQRCode.tr,
-                        style: CustomTextStyles.labelWhite500Size24Fw400,
+                        ConstantsCommon.home.tr,
+                        style: CustomTextStyles.labelBlack500Size24Fw700,
                         textAlign: TextAlign.center,
                       ),
                       IconButton(
                         icon: Icon(
-                          Icons.switch_camera,
-                          color: ColorConstants.white,
+                          Icons.share,
+                          color: ColorConstants.black,
                         ),
-                        onPressed: () {
-                          controller.toggleCamera();
-                        },
+                        onPressed: () {},
                       ),
                     ],
                   ),
+                  Text(
+                    'Enter text',
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
                   Padding(
-                    padding: getPadding(all: 10),
+                    padding: const EdgeInsets.only(
+                        left: 12, right: 12, bottom: 12, top: 2),
+                    child: InputField(
+                      digitsOnly: true,
+                      // controller: scanQrCodeController.phoneController,
+                      hintText: ConstantsCommon.phone.tr,
+                      suffixIcon: IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.close,
+                          color: Colors.grey,
+                          size: 18,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: Row(
                       children: [
-                        _buildActionButton(
-                          icon: controller.isFlashOn.value
-                              ? Icons.flash_on
-                              : Icons.flash_off,
-                          onPressed: () => controller.toggleFlashLight(),
+                        Expanded(
+                          flex: 1,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 6),
+                            child: InputField(
+                              digitsOnly: true,
+                              // controller: scanQrCodeController.phoneController,
+                              hintText: '10',
+                            ),
+                          ),
                         ),
-                        SizedBox(
-                          width: getSize(20),
-                        ),
-                        _buildActionButton(
-                          icon: CupertinoIcons.photo_fill_on_rectangle_fill,
-                          onPressed: () =>
-                              controller.getImage(ImageSource.gallery, context),
+                        Expanded(
+                          flex: 2,
+                          child: Row(
+                            children: [
+                              Checkbox(
+                                value: false,
+                                onChanged: (newValue) {},
+                              ),
+                              Text('Repeat in new line')
+                            ],
+                          ),
                         ),
                       ],
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: Text('Repeat Text'),
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      backgroundColor:
+                          MaterialStateProperty.all(Color(0xFF0ac775)),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    height: 360,
+                    color: Color.fromARGB(255, 226, 226, 226),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 20, horizontal: 20),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: Scrollbar(
+                                child: ListView.builder(
+                                  itemCount: 100,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return ListTile(
+                                      title: Text('Item $index'),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                      padding: EdgeInsets.all(12),
+                                      decoration: BoxDecoration(
+                                        color: Color(0xFF0ac775),
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(15),
+                                        ), // Set border radius here
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(Icons.copy),
+                                          SizedBox(width: 8),
+                                          Text('Copy'),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 1,
+                                  child: InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                      padding: EdgeInsets.all(12),
+                                      decoration: BoxDecoration(
+                                        color: Color(0xFF0ac775),
+                                        borderRadius: BorderRadius.only(
+                                          bottomRight: Radius.circular(15),
+                                        ),
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(Icons.share),
+                                          SizedBox(width: 8),
+                                          Text('Share'),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -115,41 +243,41 @@ class ScanQRCodeScreen extends GetView<ScanQrCodeController> {
     );
   }
 
-  Widget _buildActionButton(
-      {required IconData icon, required VoidCallback onPressed}) {
-    return NormalButton(
-      onPressed: onPressed,
-      child: Icon(
-        icon,
-        size: getSize(28),
-        color: ColorConstants.white,
-      ),
-    );
-  }
+  // Widget _buildActionButton(
+  //     {required IconData icon, required VoidCallback onPressed}) {
+  //   return NormalButton(
+  //     onPressed: onPressed,
+  //     child: Icon(
+  //       icon,
+  //       size: getSize(28),
+  //       color: ColorConstants.white,
+  //     ),
+  //   );
+  // }
 
-  Widget _buildQrView(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+//   Widget _buildQrView(BuildContext context) {
+//     Size size = MediaQuery.of(context).size;
 
-    final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
+//     final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
 
-    var scanArea = (MediaQuery.of(context).size.width < 400 ||
-            MediaQuery.of(context).size.height < 400)
-        ? size.height * 0.4
-        : size.height * 0.4;
-    return QRView(
-      key: qrKey,
-      onQRViewCreated: (QRViewController qrViewController) {
-        controller.onQRViewCreated(qrViewController, context);
-      },
-      overlay: QrScannerOverlayShape(
-        borderColor: ColorConstants.colorDarkModeBlue,
-        borderRadius: 5,
-        borderLength: 20,
-        borderWidth: 10,
-        cutOutSize: scanArea,
-      ),
-      onPermissionSet: (ctrl, p) =>
-          controller.onPermissionSet(context, ctrl, p),
-    );
-  }
+//     var scanArea = (MediaQuery.of(context).size.width < 400 ||
+//             MediaQuery.of(context).size.height < 400)
+//         ? size.height * 0.4
+//         : size.height * 0.4;
+//     return QRView(
+//       key: qrKey,
+//       onQRViewCreated: (QRViewController qrViewController) {
+//         controller.onQRViewCreated(qrViewController, context);
+//       },
+//       overlay: QrScannerOverlayShape(
+//         borderColor: ColorConstants.colorDarkModeBlue,
+//         borderRadius: 5,
+//         borderLength: 20,
+//         borderWidth: 10,
+//         cutOutSize: scanArea,
+//       ),
+//       onPermissionSet: (ctrl, p) =>
+//           controller.onPermissionSet(context, ctrl, p),
+//     );
+//   }
 }

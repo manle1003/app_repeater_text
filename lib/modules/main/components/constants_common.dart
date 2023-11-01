@@ -15,9 +15,15 @@ class ConstantsCommon {
   static String myQRCode = 'myQRCode';
   static String createQr = 'createQr';
   static String setting = 'setting';
-  static String share = 'share';
-  static String aboutUs = 'aboutUs';
   static String upgrade = 'upgrade';
+
+  static String home = 'home';
+  static String share = 'share';
+  static String feedback = 'feedback';
+  static String contactUs = 'contactUs';
+  static String changeLanguage = 'changeLanguage';
+  static String aboutUs = 'aboutUs';
+  static String more = 'more';
 
   //Favourites
   static String delete = 'delete';
@@ -79,5 +85,4 @@ class ConstantsCommon {
   static String vibrations = 'vibrations';
   static String darkMode = 'darkMode';
   static String system = 'system';
-  static String changeLanguage = 'changeLanguage';
 }

@@ -3,9 +3,7 @@ const Map<String, String> en = {
   'btnSignUp': 'Sign Up',
   'someThingWrongPlsTryAgain': 'Something went wrong, please try again',
   'tittleExitApp': 'Would you like to exit the application?',
-  'home': 'Home',
   'new': 'News',
-  'more': "More",
   'event': 'Event',
   'reward': 'Reward',
   'profile': 'Profile',
@@ -32,9 +30,15 @@ const Map<String, String> en = {
   'myQRCode': 'My QR code',
   'createQr': 'Create QR',
   'setting': 'Setting',
-  'share': 'Share',
-  'aboutUs': 'About us',
   'upgrade': 'Upgrade',
+
+  'home': 'Home',
+  'share': 'Share',
+  'feedback': 'Feedback',
+  'contactUs': 'Contact us',
+  'changeLanguage': 'Change language',
+  'aboutUs': 'About us',
+  'more': 'More',
 
   //Favourites,
   'delete': 'Delete',
@@ -98,7 +102,6 @@ const Map<String, String> en = {
   'vibrations': 'Vibrations',
   'darkMode': 'Dark mode',
   'system': 'System',
-  'changeLanguage': 'Change language',
 
   // About App,
   "Voted best Scan QR Code app in the market":
