@@ -3,9 +3,7 @@ const Map<String, String> vi = {
   'btnSignUp': 'Đăng ký',
   'someThingWrongPlsTryAgain': 'Có lỗi xảy ra, vui lòng thử lại',
   'tittleExitApp': 'Bạn có muốn thoát ứng dụng?',
-  'home': 'Trang chủ',
   'new': 'Tin tức',
-  'more': 'Thêm',
   'event': 'Sự kiện',
   'reward': 'Phần thưởng',
   'profile': 'Hồ sơ',
@@ -32,9 +30,15 @@ const Map<String, String> vi = {
   'myQRCode': 'QR của tôi',
   'createQr': 'Tạo QR',
   'setting': 'Cài đặt',
-  'share': 'Chia sẻ',
-  'aboutUs': 'Về chúng tôi',
   'upgrade': 'Nâng cấp',
+
+  'home': 'Trang chủ',
+  'share': 'Chia sẻ',
+  'feedback': 'Phản hồi',
+  'contactUs': 'Liên hệ chúng tôi',
+  'changeLanguage': 'Thay đổi ngôn ngữ',
+  'aboutUs': 'Về chúng tôi',
+  'more': 'Thêm',
 
   //Favourites,
   'delete': 'Xóa',
@@ -97,7 +101,6 @@ const Map<String, String> vi = {
   'vibrations': 'Rung',
   'darkMode': 'Chế độ tối',
   'system': 'Hệ thống',
-  'changeLanguage': 'Thay đổi ngôn ngữ',
 
   // About App,
   'contentAboutAppFirst':
