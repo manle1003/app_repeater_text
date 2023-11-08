@@ -24,6 +24,12 @@ class ConstantsCommon {
   static String changeLanguage = 'changeLanguage';
   static String aboutUs = 'aboutUs';
   static String more = 'more';
+  static String selectLanguage = 'selectLanguage';
+  static String typeContent = 'typeContent';
+  static String termsOfUse = 'termsOfUse';
+  static String privacyPolicy = 'privacyPolicy';
+  static String credits = 'credits';
+
 
   //Favourites
   static String delete = 'delete';

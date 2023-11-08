@@ -8,12 +8,13 @@ import 'package:flutter_getx_base/modules/main/scan_qr_code_controller.dart';
 import 'package:flutter_getx_base/modules/main/setting_screen/setting_controller.dart';
 import 'package:flutter_getx_base/routes/app_pages.dart';
 import 'package:flutter_getx_base/shared/constants/colors.dart';
-import 'package:flutter_getx_base/shared/constants/image_constant.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:share_plus/share_plus.dart';
+
+import '../../../shared/constants/image_constant.dart';
 
 class DrawerBarScreen extends StatelessWidget {
   final SettingController settingController = Get.put(SettingController());
@@ -70,7 +71,7 @@ class DrawerBarScreen extends StatelessWidget {
                   Get.offAllNamed(Routes.CREATE_QR_CODE_SCREEN);
                 }),
                 Divider(height: 1, color: Colors.grey.withOpacity(.3)),
-                _buildListTile(6, ConstantsCommon.more.tr,
+                _buildListTile(6, ConstantsCommon.termsOfUse.tr,
                     'assets/icons/ic_setting.svg', () {
                   settingController.isCheckDrawer.value = 6;
                   Get.toNamed(Routes.SETTING_SCREEN);
@@ -84,23 +85,23 @@ class DrawerBarScreen extends StatelessWidget {
                 //   );
                 // }),
                 // Divider(height: 1, color: Colors.grey.withOpacity(.3)),
-                // _buildListTile(8, ConstantsCommon.aboutUs.tr,
-                //     'assets/icons/ic_about_us.svg', () {
-                //   settingController.isCheckDrawer.value = 8;
-                //   Get.toNamed(
-                //     Routes.ABOUT_APP_SCREEN,
-                //   );
-                // }),
-                // Divider(height: 1, color: Colors.grey.withOpacity(.3)),
-                // _buildListTile(
-                //   9,
-                //   ConstantsCommon.upgrade.tr,
-                //   'assets/icons/ic_upgrade.svg',
-                //   () {
-                //     settingController.isCheckDrawer.value = 9;
-                //     Get.toNamed(Routes.PAYMENT_SCREEN);
-                //   },
-                // ),
+                _buildListTile(8, ConstantsCommon.privacyPolicy.tr,
+                    'assets/icons/ic_about_us.svg', () {
+                  settingController.isCheckDrawer.value = 8;
+                  Get.toNamed(
+                    Routes.ABOUT_APP_SCREEN,
+                  );
+                }),
+                Divider(height: 1, color: Colors.grey.withOpacity(.3)),
+                _buildListTile(
+                  9,
+                  ConstantsCommon.credits.tr,
+                  'assets/icons/ic_upgrade.svg',
+                  () {
+                    settingController.isCheckDrawer.value = 9;
+                    Get.toNamed(Routes.PAYMENT_SCREEN);
+                  },
+                ),
               ],
             ),
           ),

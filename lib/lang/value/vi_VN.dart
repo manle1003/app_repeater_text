@@ -39,6 +39,11 @@ const Map<String, String> vi = {
   'changeLanguage': 'Thay đổi ngôn ngữ',
   'aboutUs': 'Về chúng tôi',
   'more': 'Thêm',
+  'selectLanguage': 'Chọn ngôn ngữ',
+  'typeContent': 'Nhập nội dung của bạn',
+  'termsOfUse': 'Quy định sử dụng',
+  'privacyPolicy': 'Chính sách bảo mật',
+  'credits': 'Tín dụng',
 
   //Favourites,
   'delete': 'Xóa',

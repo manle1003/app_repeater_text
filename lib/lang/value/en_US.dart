@@ -39,6 +39,11 @@ const Map<String, String> en = {
   'changeLanguage': 'Change language',
   'aboutUs': 'About us',
   'more': 'More',
+  'selectLanguage': 'Select language',
+  'typeContent': 'Type your content',
+  'termsOfUse': 'Terms of use',
+  'privacyPolicy': 'Privacy policy',
+  'credits': 'Credits',
 
   //Favourites,
   'delete': 'Delete',
