@@ -69,6 +69,7 @@ const Map<String, String> vi = {
   'enterInput': 'Nhập thông tin',
   'save': 'Lưu',
   'fullNameRequired': 'Tên đầy đủ là bắt buộc',
+  'copySuccess': 'Sao chép thành công!',
 
   //Create Qr Code,
   'createQRCode': 'Tạo mã QR',
@@ -106,6 +107,8 @@ const Map<String, String> vi = {
   'vibrations': 'Rung',
   'darkMode': 'Chế độ tối',
   'system': 'Hệ thống',
+  'stylize': 'Cách điệu',
+
 
   // About App,
   'contentAboutAppFirst':

@@ -732,7 +732,7 @@ class CustomTextStyles {
             ? appTheme.black500
             : appTheme.whiteA700,
         fontSize: getFontSize(
-          18,
+          22,
         ),
         fontWeight: FontWeight.w600,
       );

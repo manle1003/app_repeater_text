@@ -30,7 +30,6 @@ class ConstantsCommon {
   static String privacyPolicy = 'privacyPolicy';
   static String credits = 'credits';
 
-
   //Favourites
   static String delete = 'delete';
   static String doWantDelete = 'doWantDelete';
@@ -91,4 +90,7 @@ class ConstantsCommon {
   static String vibrations = 'vibrations';
   static String darkMode = 'darkMode';
   static String system = 'system';
+  static String copySuccess = 'copySuccess';
+  static String copy = 'copy';
+  static String stylize = 'stylize';
 }

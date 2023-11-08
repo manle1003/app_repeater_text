@@ -107,6 +107,7 @@ const Map<String, String> en = {
   'vibrations': 'Vibrations',
   'darkMode': 'Dark mode',
   'system': 'System',
+  'stylize': 'Stylize',
 
   // About App,
   "Voted best Scan QR Code app in the market":

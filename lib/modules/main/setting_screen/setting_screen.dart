@@ -4,26 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_getx_base/app_controller.dart';
 import 'package:flutter_getx_base/modules/main/components/constants_common.dart';
 import 'package:flutter_getx_base/modules/main/components/drawer.dart';
-import 'package:flutter_getx_base/modules/main/components/user_profile_setting_groups.dart';
-import 'package:flutter_getx_base/modules/main/components/user_profile_setting_item.dart';
-import 'package:flutter_getx_base/modules/main/scan_qr_code_controller.dart';
 import 'package:flutter_getx_base/modules/main/setting_screen/setting_controller.dart';
 import 'package:flutter_getx_base/routes/app_pages.dart';
 import 'package:flutter_getx_base/shared/constants/colors.dart';
-import 'package:flutter_getx_base/shared/constants/image_constant.dart';
-import 'package:flutter_getx_base/shared/sharepreference/sharepreference.dart';
-import 'package:flutter_getx_base/shared/widgets/custom_text_style.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
-import 'package:share_plus/share_plus.dart';
-
-import '../../../shared/widgets/show_dialog_upgrade.dart';
 
 class SettingScreen extends GetView<SettingController> {
-  final ScanQrCodeController scanQrCodeController =
-      Get.put(ScanQrCodeController());
-  final TextEditingController _upgradeProController = TextEditingController();
+
   final AppController appController = Get.find();
 
   @override

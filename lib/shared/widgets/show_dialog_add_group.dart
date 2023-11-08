@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_base/app_controller.dart';
-import 'package:flutter_getx_base/modules/main/scan_qr_code_controller.dart';
+import 'package:flutter_getx_base/modules/main/home_controller.dart';
 import 'package:flutter_getx_base/shared/constants/colors.dart';
 import 'package:flutter_getx_base/shared/utils/size_utils.dart';
 import 'package:flutter_getx_base/shared/widgets/input_field.dart';
@@ -16,7 +16,7 @@ class ShowDialogAddGroup extends StatelessWidget {
     required this.textEditingController,
   }) : super(key: key);
 
-  final ScanQrCodeController scanQrCodeController = Get.find();
+  final HomeController homeController = Get.find();
   final GlobalKey<FormState> formKey;
   final AppController appController = Get.find();
   final Function() pressOK;
