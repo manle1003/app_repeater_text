@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_getx_base/app_controller.dart';
 import 'package:flutter_getx_base/lang/translation_service.dart';
 import 'package:flutter_getx_base/modules/main/components/constants_common.dart';
-import 'package:flutter_getx_base/modules/main/scan_qr_code_controller.dart';
+import 'package:flutter_getx_base/modules/main/home_controller.dart';
 import 'package:flutter_getx_base/modules/main/setting_screen/setting_controller.dart';
 import 'package:flutter_getx_base/routes/app_pages.dart';
 import 'package:flutter_getx_base/shared/constants/colors.dart';
@@ -12,21 +12,17 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:share_plus/share_plus.dart';
-
-import '../../../shared/constants/image_constant.dart';
-
 class DrawerBarScreen extends StatelessWidget {
   final SettingController settingController = Get.put(SettingController());
-  final ScanQrCodeController scanQrCodeController =
-      Get.put(ScanQrCodeController());
+  final HomeController homeController =
+      Get.put(HomeController ());
   final AppController appController = Get.find();
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        return scanQrCodeController.onWillPop();
+        return homeController.onWillPop();
       },
       child: SafeArea(
         child: Drawer(
@@ -44,7 +40,6 @@ class DrawerBarScreen extends StatelessWidget {
                 _buildListTile(1, ConstantsCommon.share.tr,
                     'assets/icons/img_galary.svg', () {
                   settingController.isCheckDrawer.value = 1;
-                  scanQrCodeController.getImage(ImageSource.gallery, context);
                 }),
                 Divider(height: 1, color: Colors.grey.withOpacity(.3)),
                 _buildListTile(2, ConstantsCommon.feedback.tr,

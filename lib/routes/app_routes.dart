@@ -33,4 +33,5 @@ abstract class Routes {
   static const CODE39_SCREEN = '/code39_screen';
   static const CODE93_SCREEN = '/code93_screen';
   static const CODE128_SCREEN = '/code128_screen';
+  static const STYLIZE_SCREEN = '/stylize_screen';
 }

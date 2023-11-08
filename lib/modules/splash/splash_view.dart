@@ -20,7 +20,7 @@ class _SplashViewState extends State<SplashView> {
     Timer(
       const Duration(seconds: 2),
       () async {
-        Get.offAllNamed(Routes.QR_CODE);
+        Get.offAllNamed(Routes.HOME);
       },
     );
   }

@@ -3,7 +3,7 @@ import 'package:flutter_getx_base/app_controller.dart';
 import 'package:flutter_getx_base/modules/main/components/constants_common.dart';
 import 'package:flutter_getx_base/modules/main/components/drawer.dart';
 import 'package:flutter_getx_base/modules/main/history/history_controller.dart';
-import 'package:flutter_getx_base/modules/main/scan_qr_code_controller.dart';
+import 'package:flutter_getx_base/modules/main/home_controller.dart';
 import 'package:flutter_getx_base/routes/app_pages.dart';
 import 'package:get/get.dart';
 import '../setting_screen/setting_controller.dart';
@@ -11,7 +11,6 @@ import '../setting_screen/setting_controller.dart';
 class HistoryScreen extends GetView<HistoryController> {
   HistoryScreen({super.key});
   final AppController appController = Get.find();
-  final ScanQrCodeController scanQrCodeController = Get.find();
   final SettingController settingController = Get.put(SettingController());
 
   @override

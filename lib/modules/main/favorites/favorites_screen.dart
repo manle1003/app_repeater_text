@@ -5,7 +5,7 @@ import 'package:flutter_getx_base/models/save_item_scan_model.dart';
 import 'package:flutter_getx_base/modules/main/components/constants_common.dart';
 import 'package:flutter_getx_base/modules/main/favorites/favorites_controller.dart';
 import 'package:flutter_getx_base/modules/main/history/history_controller.dart';
-import 'package:flutter_getx_base/modules/main/scan_qr_code_controller.dart';
+import 'package:flutter_getx_base/modules/main/home_controller.dart';
 import 'package:flutter_getx_base/routes/app_pages.dart';
 import 'package:get/get.dart';
 import '../../../app_controller.dart';
@@ -16,7 +16,6 @@ class FavoriteScreen extends GetView<FavoriteController> {
   FavoriteScreen({super.key});
 
   final AppController appController = Get.find();
-  final ScanQrCodeController scanQrCodeController = Get.find();
   final HistoryController historyController = Get.put(HistoryController());
   final List<QRCode> listQRCode = [];
   final SettingController settingController = Get.find();
@@ -30,7 +29,6 @@ class FavoriteScreen extends GetView<FavoriteController> {
       },
       child: Obx(
         () => Scaffold(
-          key: scanQrCodeController.myQRCodeKey,
           drawer: DrawerBarScreen(),
           appBar: AppBar(
             centerTitle: true,
@@ -40,8 +38,7 @@ class FavoriteScreen extends GetView<FavoriteController> {
                 : settingController.isCheckColors.value,
             leading: IconButton(
               onPressed: () {
-                scanQrCodeController.titleChange.value = "";
-                scanQrCodeController.myQRCodeKey.currentState?.openDrawer();
+            
               },
               icon: Icon(
                 Icons.arrow_back,
