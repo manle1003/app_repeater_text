@@ -40,16 +40,13 @@ class SettingScreen extends GetView<SettingController> {
           appBar: AppBar(
             backgroundColor: controller.isCheckColors.value,
             title: Text(
-              ConstantsCommon.setting.tr,
+              ConstantsCommon.termsOfUse.tr,
               style: TextStyle(color: ColorConstants.white),
             ),
             leading: IconButton(
-              icon: Transform.scale(
-                scale: 0.7,
-                child: SvgPicture.asset(
-                  ImageConstant.iconMenuVip,
-                  color: ColorConstants.white,
-                ),
+              icon: Icon(
+                Icons.arrow_back,
+                color: Colors.white,
               ),
               onPressed: () {
                 controller.openDrawer();
@@ -60,185 +57,10 @@ class SettingScreen extends GetView<SettingController> {
           body: Stack(
             children: [
               SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: 24),
-                      Text(
-                        ConstantsCommon.colorBoard.tr,
-                        style: CustomTextStyles.labelBlack500Size18Fw600,
-                      ),
-                      SizedBox(height: 8),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            for (int i = 0;
-                                i < controller.listColors.length;
-                                i++)
-                              GestureDetector(
-                                onTap: () async {
-                                  controller.listCheckStatus[i] = true;
-                                  SharedPreferencesManager.instance
-                                      .setInt('isCheckBox', i);
-                                  for (int j = 0;
-                                      j < controller.listCheckStatus.length;
-                                      j++) {
-                                    if (j != i) {
-                                      controller.listCheckStatus[j] = false;
-                                    }
-                                  }
-                                  controller.isCheckColors.value =
-                                      controller.listColors[i];
-                                  await SharedPreferencesManager.instance
-                                      .saveColorToPreferences("isCheckColors",
-                                          controller.isCheckColors.value);
-                                },
-                                child: boxThemeColorCustom(
-                                  isCheck: controller.listCheckStatus[i],
-                                  colors: controller.listColors[i],
-                                ),
-                              ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 24),
-                      BuildSettingsGroup(
-                        settingsGroupTitle: ConstantsCommon.theme.tr,
-                        items: [
-                          BuildSettingsItem(
-                            onTap: () {
-                              // Vibration.vibrate(duration: 1000);
-                              controller.isCheckVibration.value = true;
-                            },
-                            imageAsset: ImageConstant.iconVibration,
-                            widgetTitle: Text(
-                              ConstantsCommon.vibrations.tr,
-                              style: CustomTextStyles.labelGray600Size16Fw600,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            trailing: Obx(
-                              () => Theme(
-                                data: ThemeData(
-                                  unselectedWidgetColor:
-                                      controller.isCheckColors.value,
-                                ),
-                                child: Checkbox.adaptive(
-                                  value: controller.isChecked.value,
-                                  onChanged: (bool? value) {
-                                    controller.isChecked.value = value!;
-                                  },
-                                  activeColor: controller.isCheckColors.value,
-                                  checkColor: ColorConstants.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                          BuildSettingsItem(
-                            onTap: () {},
-                            // Get.toNamed(Routes.EDIT_PROFILE,
-                            //     arguments: myController),
-                            imageAsset: ImageConstant.iconAboutUs,
-                            widgetTitle: Text(
-                              ConstantsCommon.darkMode.tr,
-                              style: CustomTextStyles.labelGray600Size16Fw600,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            trailing: Obx(
-                              () => Switch(
-                                value: appController.isDarkModeOn.value,
-                                activeTrackColor:
-                                    appController.isDarkModeOn.value
-                                        ? Colors.white
-                                        : Colors.blueGrey,
-                                activeColor: appController.isDarkModeOn.value
-                                    ? Colors.white
-                                    : Colors.lightBlue,
-                                onChanged: (value) {
-                                  appController.toggleDarkMode();
-                                },
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      BuildSettingsGroup(
-                        settingsGroupTitle: ConstantsCommon.system.tr,
-                        items: [
-                          BuildSettingsItem(
-                            onTap: () {},
-                            // Get.toNamed(Routes.EDIT_PROFILE,
-                            //     arguments: myController),
-                            imageAsset: ImageConstant.iconLanguage,
-                            widgetTitle: Text(
-                              ConstantsCommon.changeLanguage.tr,
-                              style: CustomTextStyles.labelGray600Size16Fw600,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            isIconLanguage: true,
-                          ),
-                          BuildSettingsItem(
-                            onTap: () {
-                              Share.share(
-                                "I'm using this incredibly convenient QR code and barcode scanning app. You should give it a try!",
-                              );
-                            },
-                            imageAsset: ImageConstant.iconShare,
-                            widgetTitle: Text(
-                              ConstantsCommon.share.tr,
-                              style: CustomTextStyles.labelGray600Size16Fw600,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          BuildSettingsItem(
-                            onTap: () => Get.toNamed(
-                              Routes.ABOUT_APP_SCREEN,
-                            ),
-                            imageAsset: ImageConstant.iconAboutUs,
-                            widgetTitle: Text(
-                              'Scan QR Code',
-                              style: CustomTextStyles.labelGray600Size16Fw600,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          BuildSettingsItem(
-                            onTap: () {
-                              Get.toNamed(Routes.PAYMENT_SCREEN);
-                            },
-                            onLongPress: () => showDialog(
-                              context: context,
-                              builder: (context) {
-                                return ShowDialogUpgrade(
-                                  codeController: _upgradeProController,
-                                  constGrey: Colors.grey,
-                                  hiddenTextField: true,
-                                );
-                              },
-                            ),
-                            imageAsset: ImageConstant.iconUpgrade,
-                            widgetTitle: Text(
-                              ConstantsCommon.upgrade.tr,
-                              style: CustomTextStyles.labelGray600Size16Fw600,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            trailing: Lottie.asset(
-                              'assets/icons/pro_version.json',
-                              width: 48,
-                              height: 48,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                child: Column(
+                  children: [
+                    
+                  ],
                 ),
               ),
             ],

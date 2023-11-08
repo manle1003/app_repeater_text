@@ -5,17 +5,7 @@ import 'package:flutter_getx_base/modules/main/components/drawer.dart';
 import 'package:flutter_getx_base/modules/main/history/history_controller.dart';
 import 'package:flutter_getx_base/modules/main/scan_qr_code_controller.dart';
 import 'package:flutter_getx_base/routes/app_pages.dart';
-import 'package:flutter_getx_base/shared/constants/constants.dart';
-import 'package:flutter_getx_base/shared/utils/size_utils.dart';
-import 'package:flutter_getx_base/shared/widgets/custom_text_style.dart';
-import 'package:flutter_getx_base/shared/widgets/dialog_confirm.dart';
-import 'package:flutter_getx_base/shared/widgets/menu_popup_custom.dart';
-import 'package:flutter_getx_base/theme/theme_helper.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
-
-import '../../../shared/widgets/show_dialog_add_group.dart';
 import '../setting_screen/setting_controller.dart';
 
 class HistoryScreen extends GetView<HistoryController> {
@@ -35,249 +25,94 @@ class HistoryScreen extends GetView<HistoryController> {
         () => Scaffold(
           drawer: DrawerBarScreen(),
           appBar: AppBar(
-            title: Text(ConstantsCommon.history.tr),
             centerTitle: true,
-            actions: [
-              MenuPopupCustom(
-                onPressedDelete: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return ConfirmDialog(
-                        title: ConstantsCommon.delete.tr,
-                        content: ConstantsCommon.doWantDeleteAll.tr,
-                        ok: () {
-                          controller.deleteQRCodeAll();
-                          Get.back();
-                        },
-                      );
-                    },
-                  );
-                },
-                onPressedShare: () {
-                  if (controller.listHistory.value != null) {
-                    controller.exportAllItemToCsv(controller.listHistory.value);
-                  }
-                },
-              ),
-            ],
+            title: Text(ConstantsCommon.contact.tr),
             backgroundColor: appController.isDarkModeOn.value
                 ? Color(0xFF233142)
                 : settingController.isCheckColors.value,
+            // leading: IconButton(
+            //   icon: Icon(Icons.arrow_back),
+            //   onPressed: () {},
+            // ),
           ),
-          body: controller.listHistory.value != null &&
-                  controller.listHistory.value?.length != 0
-              ? SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(14),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              ConstantsCommon.listHistory.tr,
-                              style: CustomTextStyles.labelBlack500Size16Fw500,
-                            ),
-                          ],
+          body: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    color: appController.isDarkModeOn.value
+                        ? Color(0xFF233142)
+                        : settingController.isCheckColors.value,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.home_outlined,
+                            color: Colors.white,
+                          ),
+                          Icon(
+                            Icons.arrow_right_outlined,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            width: 12,
+                          ),
+                          Text('Text Repeater - Contact Us')
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Text(
+                    'Kindly mention your \nproblem/feedback below!',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Text(
+                    'Comments/Feedback',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  TextFormField(
+                    minLines: 10,
+                    maxLines: 15,
+                    decoration: InputDecoration(
+                        hintText: 'Type your comment/feedback here...',
+                        hintStyle: TextStyle(color: Colors.grey),
+                        border: OutlineInputBorder()),
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text('Submit'),
+                      style: ElevatedButton.styleFrom(
+                        primary: appController.isDarkModeOn.value
+                            ? Color(0xFF233142)
+                            : settingController.isCheckColors
+                                .value, // Set the button's background color
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
                         ),
                       ),
-                      Padding(
-                          padding: const EdgeInsets.only(left: 16, right: 16),
-                          child: ListView.builder(
-                            physics: NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount:
-                                controller.listHistory.value?.length ?? 0,
-                            itemBuilder: (BuildContext context, int index) {
-                              final reversedIndex =
-                                  controller.listHistory.value!.length -
-                                      1 -
-                                      index;
-                              final item =
-                                  controller.listHistory.value?[reversedIndex];
-                              final slidableKey = GlobalKey<SlidableState>();
-
-                              return Slidable(
-                                key: slidableKey,
-                                actionPane: SlidableDrawerActionPane(),
-                                secondaryActions: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: ColorConstants.red,
-                                    ),
-                                    child: IconButton(
-                                      icon: Icon(
-                                        Icons.delete,
-                                        color: appTheme.gray300,
-                                      ),
-                                      onPressed: () {
-                                        showDialog(
-                                          context: context,
-                                          builder: (context) {
-                                            return ConfirmDialog(
-                                              title: ConstantsCommon.delete.tr,
-                                              content: ConstantsCommon
-                                                  .doWantDelete.tr,
-                                              ok: () {
-                                                controller.deleteQRCodeById(
-                                                    item?.id ?? '');
-                                                slidableKey.currentState
-                                                    ?.close();
-                                                Get.back();
-                                              },
-                                            );
-                                          },
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: ColorConstants
-                                          .backgroundColorButtonGreen,
-                                    ),
-                                    child: IconButton(
-                                      icon: Icon(
-                                        Icons.favorite,
-                                        color: appTheme.whiteA700,
-                                      ),
-                                      onPressed: () {
-                                        controller.saveFavorite(item?.id ?? '');
-                                        slidableKey.currentState?.close();
-                                      },
-                                    ),
-                                  ),
-                                ],
-                                child: Padding(
-                                  padding: getPadding(all: 1.2),
-                                  child: Container(
-                                    padding: getPadding(top: 5),
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: appController.isDarkModeOn.value
-                                          ? ColorConstants.darkCard
-                                          : ColorConstants.white,
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    child: ListTile(
-                                      onTap: () {
-                                        Get.toNamed(
-                                          Routes.SCAN_DETAIL_SCREEN,
-                                          arguments: {
-                                            'qrCode': item,
-                                            'imagePath': '',
-                                          },
-                                        );
-                                      },
-                                      leading: Container(
-                                        width: getSize(40),
-                                        alignment: Alignment.center,
-                                        child: controller
-                                            .setIcon(item?.type ?? ''),
-                                      ),
-                                      title: Text(
-                                        item?.title ?? '',
-                                        style: TextStyle(
-                                            color:
-                                                appController.isDarkModeOn.value
-                                                    ? ColorConstants.lightGray
-                                                    : Colors.black,
-                                            fontSize: 18),
-                                      ),
-                                      subtitle: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          SizedBox(
-                                            height: getSize(8),
-                                          ),
-                                          Text(
-                                            controller.formatDateTimeNow(
-                                              item?.dateTime ?? DateTime.now(),
-                                            ),
-                                            style: TextStyle(
-                                              color: ColorConstants.greyColor,
-                                            ),
-                                          ),
-                                          Text(
-                                            item?.qrCode ?? '',
-                                            maxLines: 4,
-                                            style: TextStyle(
-                                              color: ColorConstants.greyColor,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      trailing: MenuPopupCustom(
-                                        offset: Offset(8, 40),
-                                        onPressedDelete: () {
-                                          showDialog(
-                                            context: context,
-                                            builder: (context) {
-                                              return ConfirmDialog(
-                                                title:
-                                                    ConstantsCommon.delete.tr,
-                                                content: ConstantsCommon
-                                                    .doWantDelete.tr,
-                                                ok: () {
-                                                  controller.deleteQRCodeById(
-                                                      item?.id ?? '');
-                                                  Get.back();
-                                                },
-                                              );
-                                            },
-                                          );
-                                        },
-                                        onPressedShare: () {
-                                          if (item != null) {
-                                            controller.exportItemToCsv(item);
-                                          }
-                                        },
-                                        onPressedEdit: () {
-                                          Get.dialog(
-                                            ShowDialogAddGroup(
-                                              formKey: controller
-                                                  .changeTitleListHistoryFormKey,
-                                              pressOK: () {
-                                                controller.changeTitle(
-                                                  item?.id ?? '',
-                                                  controller
-                                                      .changeTitleListHistoryFormKey,
-                                                  controller
-                                                      .changeTitleHistoryController
-                                                      .text,
-                                                );
-                                              },
-                                              textEditingController: controller
-                                                  .changeTitleHistoryController,
-                                            ),
-                                          );
-                                        },
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              );
-                            },
-                          ))
-                    ],
-                  ),
-                )
-              : Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(ConstantsCommon.noData.tr,
-                        style: CustomTextStyles.labelGray600Size16Fw500),
-                    Lottie.asset(
-                      'assets/svgs/image_no_data.json',
                     ),
-                  ],
-                ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );
