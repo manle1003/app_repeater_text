@@ -1,103 +1,20 @@
 const Map<String, String> hr = {
-  'signUpBtn': 'Registriraj se',
-  'btnSignUp': 'Registriraj se',
-  'someThingWrongPlsTryAgain':
-      'Nešto je pošlo po zlu, molimo pokušajte ponovno',
-  'tittleExitApp': 'Želite li izaći iz aplikacije?',
+  //Home
   'home': 'Početna',
-  'new': 'Vijesti',
-  'more': 'Više',
-  'event': 'Događaj',
-  'reward': 'Nagrada',
-  'profile': 'Profil',
-  'forgotPassword': 'Zaboravljena lozinka',
-  'donHaveAnAcount': 'Nemate račun? ',
-  'alreadyHaveAnAccount': 'Već imate račun? ',
-  'btnSignIn': 'Prijavi se',
-  'enterYourPhone': 'Unesite broj telefona',
-  'enterYourPassword': 'Unesite lozinku',
-  'passwordIsRequired': 'Lozinka je obavezna',
-  'textErrorPassword': 'Lozinka mora imati barem 6 znakova',
-  'phoneNumberIsRequired': 'Broj telefona je obavezan',
-
-  //Scan Qr Code,
-  'scanQRCode': 'Skeniraj QR kod',
-  'noPermission': 'Bez dopuštenja',
-  'noImageSelected': 'Nije odabrana slika',
+  'enterText': 'Unesite tekst',
+  'typeContent': 'Upišite svoj sadržaj',
+  'repeatNewLine': 'Ponovi u novom redu',
+  'repeatText': 'Ponovi tekst',
+  "copy": "Kopiraj",
+  'share': 'Podijeli',
+  'stylize': 'Stiliziraj',
+  'copySuccess': 'Uspješno kopirano!',
 
   //Drawer,
-  'scan': 'Skeniraj',
-  'scanImage': 'Skeniraj sliku',
-  'favourites': 'Favoriti',
-  'history': 'Povijest',
-  'myQRCode': 'Moj QR kod',
-  'createQr': 'Kreiraj QR kod',
   'setting': 'Postavke',
-  'share': 'Podijeli',
+  'feedback': 'Povratne informacije',
+  'contactUs': 'Kontaktirajte nas',
   'aboutUs': 'O nama',
-  'upgrade': 'Nadogradnja',
-
-  //Favourites,
-  'delete': 'Obriši',
-  'doWantDelete': 'Želite li zaista izbrisati?',
-  'doWantDeleteAll': 'Želite li zaista izbrisati cijelu povijest?',
-  'doWantDeleteAllFavorite': 'Želite li zaista izbrisati sve favorite?',
-  'noData': 'Podaci nisu pronađeni!',
-  'cancel': 'Odustani',
-  'ok': 'U redu',
-
-  // Dialog
-  "nameQR": "Naslov",
-  "enterYourTitle": "Unesite svoj naslov",
-
-  //History,
-  'today': 'Danas',
-  'listHistory': 'Lista povijesti',
-  'listFavorite': 'Lista favorita',
-
-  //My Qr Code,
-  'myQR': 'Moj QR',
-  'createYourQR':
-      'Kreirajte svoj QR kod.\nUnesite samo podatke koje želite podijeliti',
-  'fullName': 'Puno ime',
-  'company': 'Tvrtka',
-  'Address': 'Adresa',
-  'phone': 'Telefon',
-  'email': 'Email',
-  'enterInput': 'Unesite podatak',
-  'save': 'Spremi',
-  'saveImage': 'Slika je spremljena!',
-  'fullNameRequired': 'Puno ime je obavezno',
-
-  //Create Qr Code,
-  'createQRCode': 'Kreiraj QR kod',
-  'otherTypes': 'Drugi tipovi',
-  'text': 'Tekst',
-  'webLink': 'Web link',
-  'contact': 'Kontakt',
-  'sms': 'SMS',
-  'location': 'Lokacija',
-  'ean8': 'EAN_8',
-  'ean13': 'EAN_13',
-  'code39': 'CODE_39',
-  'code93': 'CODE_93',
-  'code128': 'CODE_128',
-  'required': 'Obavezno!',
-  'linkRequired': 'Link je obavezan!',
-  'http://': 'http://',
-  'emailTopic': 'Naslov e-maila',
-  'emailRequired': 'E-mail je obavezan',
-  'phoneRequired': 'Telefon je obavezan',
-  'latitude': 'Geografska širina',
-  'longitude': 'Geografska dužina',
-  'latitudeRequired': 'Geografska širina je obavezna',
-  'longitudeRequired': 'Geografska dužina je obavezna',
-  'query': 'Upit',
-  'codeRequired': 'Kod je obavezan!',
-  'code7Character': 'Kod mora imati 7 znakova!',
-  'code12Character': 'Kod mora imati 12 znakova!',
-  'success': 'Uspjeh!',
-  'addSuccess': 'Dodavanje u favorite uspješno!',
 
   //Setting,
   'colorBoard': 'Paleta boja',
@@ -106,85 +23,5 @@ const Map<String, String> hr = {
   'darkMode': 'Tamni način',
   'system': 'Sustav',
   'changeLanguage': 'Promijeni jezik',
-  'copySuccess': 'Kopiranje uspješno!',
-
-  // About App,
-  "Voted best Scan QR Code app in the market":
-      "Proglasili najboljom aplikacijom za skeniranje QR koda na tržištu",
-  "Experience the best app without ads":
-      "Doživite najbolju aplikaciju bez oglasa",
-  'contentAboutAppFirst':
-      'Naša aplikacija omogućuje vam jednostavno skeniranje QR kodova i barkodova te brzo generiranje vlastitih. S mnogim korisnim značajkama i prijateljskim sučeljem, doživjet ćete ga na praktičan i pametan način.',
-  "keyFeature": "Glavne značajke:",
-  "contentKeyFeatureFirst":
-      "Skeniranje QR kodova i barkodova: Brzo i učinkovito skeniranje QR kodova ili barkodova s kamere uređaja.",
-  "contentKeyFeatureTow":
-      "Kreiranje QR kodova i barkodova: Jednostavno stvaranje QR kodova ili barkodova unosom informacija koje želite sadržavati.",
-  "contentKeyFeatureThree":
-      "Spremanje povijesti skeniranja: Pratite QR kodove i barkodove koje ste prethodno skenirali radi jednostavnog pregleda ili dijeljenja.",
-  "contentKeyFeatureFor":
-      "Dijeljenje i pohrana kodova: Podijelite QR kodove i barkodove s prijateljima ili ih pohranite izravno u aplikaciju.",
-  "contentAboutAppp":
-      'S našom aplikacijom za QR kodove i barkodove obećavamo besprijekorno iskustvo skeniranja i stvaranja kodova.',
-  "commentFirst":
-      "Ova aplikacija mijenja igru! Nevjerojatno je jednostavna za korištenje i znatno mi je olakšala život. Ne mogu vjerovati da sam ikada uspio bez nje!",
-  "commentTwo":
-      "Isprobao sam nekoliko sličnih aplikacija, ali ova se ističe. Brza je, učinkovita i pomaže mi da ostanem organiziran. Odličan posao, developeri!",
-  "commentThree":
-      "Razina detalja i prilagodbe ove aplikacije je impresivna. Sviđa mi se kako je mogu prilagoditi svojim specifičnim potrebama. To je kao imati osobnog asistenta u džepu.",
-  "commentFor":
-      "Najnovija nadogradnja je fantastična! Jasno je da tim iza ove aplikacije vodi računa o povratnim informacijama korisnika i posvećen je tome da je još više unaprijedi. Nastavite s odličnim radom!",
-  "commentFive":
-      "Ova aplikacija znatno je poboljšala moju produktivnost. Preporučio sam je svim svojim prijateljima, i i oni je vole. To je neophodno za svakoga tko želi optimizirati svoje zadatke.",
-  "upgradeNow": "NADOGRAĐUJTE SADA ZA",
-  "Scan QR Code users": "Korisnici Scan QR Code",
-  "Get unlimited scans": "Dobijte neograničene skenove",
-  "Scan, save and export nunlimited cards!":
-      "Skenirajte, spremite i izvozite\nneograničene kartice!",
-  "Yearly Premium": "Godišnja premium",
-  "Remove Ads": "Ukloni oglase",
-  "Promote code": "Promotivni kod",
-  "Lifetime Premium": "Doživotna premium",
-  "Monthly Premium": "Mjesečna premium",
-  "free": "Besplatno",
-  "per month": "mjesečno",
-  "search": "Pretraži",
-  "copy": "Kopiraj",
-  "scanDetail": "Detalji skeniranja",
-  "enterCode": "Unesite kod",
-  "removeFavorite": "Uspješno uklonjeno!",
-  "easyScanPro": "Jednostavno skeniranje Pro!",
-  "freeVersion": "Besplatna verzija",
-  "Upgrade to Pro Version and Enjoy More Benefits!":
-      "Nadogradite na Pro verziju i uživajte u više pogodnosti!",
-  "styleMyQrCode": "Postavite stil mog QR koda",
-  'appInHouse': 'Oglasi unutar aplikacije',
-  'style': 'Stil',
-  "Generate code": "Generiraj kod",
-
-  // Ads in house
-  "description_app_01":
-      "Priskrbite iznimno brzo skeniranje, naš Barcode & QR Scanner je neophodan za svakog korisnika Androida.",
-  "description_app_02":
-      "Lako snimite i organizirajte informacije s posjetnica, proširite svoju mrežu i podignite svoje poslovne kontakte na višu razinu.",
-  "description_app_03":
-      "Skeniranje posjetnica pravo je rješenje za pojednostavljenje upravljanja kontaktima.",
-  "downloadapp": "Preuzmi aplikaciju",
-  "useapp": "Koristi aplikaciju",
-  "peopleUseThis": "ljudi koriste ovo",
-  "shareApp":
-      "Koristim ovu nevjerojatno praktičnu aplikaciju za skeniranje QR kodova i barkodova. Trebali biste je isprobati!",
-  "inAppReview": "Ocijenite aplikaciju",
-
-  //preytty
-  "smooth": "Glatko",
-  "roundedRectangle": "Zaobljeni pravokutnik",
-  "colored": "Obojeno",
-  "roundedCorners": "Zaobljeni rubovi",
-  "image": "Slika",
-  "imagePosition": "Pozicija slike",
-  "embedded": "Ugrađeno",
-  "foreground": "Prednji plan",
-  "background": "Pozadina",
-  "language": "Jezik",
+  'upgrade': 'Ažuriraj',
 };

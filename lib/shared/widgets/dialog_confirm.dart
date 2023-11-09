@@ -45,7 +45,7 @@ class ConfirmDialog extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    ConstantsCommon.delete.tr,
+                    'Delete',
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 18,
@@ -81,7 +81,7 @@ class ConfirmDialog extends StatelessWidget {
                 TextButton(
                   onPressed: () => Navigator.pop(context),
                   child: Text(
-                    ConstantsCommon.cancel.tr,
+                    'Cancel',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: appController.isDarkModeOn.value
@@ -93,7 +93,7 @@ class ConfirmDialog extends StatelessWidget {
                 TextButton(
                   onPressed: ok,
                   child: Text(
-                    ConstantsCommon.ok.tr,
+                    'OK',
                     textAlign: TextAlign.center,
                   ),
                 ),

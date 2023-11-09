@@ -11,7 +11,6 @@ import 'package:flutter_getx_base/routes/app_pages.dart';
 import 'package:flutter_getx_base/shared/constants/colors.dart';
 import 'package:flutter_getx_base/shared/constants/image_constant.dart';
 import 'package:flutter_getx_base/shared/sharepreference/sharepreference.dart';
-import 'package:flutter_getx_base/shared/utils/size_utils.dart';
 import 'package:flutter_getx_base/shared/widgets/custom_text_style.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -192,7 +191,7 @@ class SettingScreen extends GetView<SettingController> {
                             ),
                             imageAsset: ImageConstant.iconAboutUs,
                             widgetTitle: Text(
-                              'Repeat Text',
+                              ConstantsCommon.repeatText.tr,
                               style: CustomTextStyles.labelGray600Size18Fw600,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
@@ -255,16 +254,6 @@ class SettingScreen extends GetView<SettingController> {
                           ),
                         ],
                       ),
-                      Text(
-                        'styleMyQrCode'.tr,
-                        style: CustomTextStyles.labelBlack500Size18Fw600,
-                      ),
-                      SizedBox(
-                        height: getSize(20),
-                      ),
-                      SizedBox(
-                        height: getSize(40),
-                      )
                     ],
                   ),
                 ),
