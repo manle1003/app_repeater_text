@@ -53,9 +53,17 @@ class ChangeLanguage extends GetView<ChangeLanguageController> {
                           locale: 'vi',
                           index: 1),
                       LanguageWidget(
-                          flag: '🇰🇷', label: '한국어', locale: 'ko', index: 2),
+                        flag: '🇰🇷',
+                        label: '한국어',
+                        locale: 'ko',
+                        index: 2,
+                      ),
                       LanguageWidget(
-                          flag: '🇨🇳', label: '中文', locale: 'cn', index: 3),
+                        flag: '🇨🇳',
+                        label: '中文',
+                        locale: 'cn',
+                        index: 3,
+                      ),
                       LanguageWidget(
                           flag: '🇦🇹',
                           label: 'ÖSTERREICH DEUTSCH',

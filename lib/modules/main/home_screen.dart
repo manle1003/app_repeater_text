@@ -69,7 +69,7 @@ class HomeScreen extends GetView<HomeController> {
                 Align(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    'Enter text',
+                    ConstantsCommon.enterText.tr,
                     style: TextStyle(
                       color: Colors.grey,
                     ),
@@ -126,7 +126,9 @@ class HomeScreen extends GetView<HomeController> {
                                 checkColor: ColorConstants.backgroundColor,
                               ),
                             ),
-                            Text('Repeat in new line')
+                            Text(
+                              ConstantsCommon.repeatNewLine.tr,
+                            )
                           ],
                         ),
                       ),
@@ -138,7 +140,7 @@ class HomeScreen extends GetView<HomeController> {
                   onPressed: () {
                     controller.viewListRepeat();
                   },
-                  child: Text('Repeat text'),
+                  child: Text(ConstantsCommon.repeatText.tr,),
                   style: ElevatedButton.styleFrom(
                     primary: ColorConstants.backgroundColorButtonGreen,
                     shape: RoundedRectangleBorder(
@@ -232,7 +234,7 @@ class HomeScreen extends GetView<HomeController> {
                                     ),
                                     SizedBox(width: 8),
                                     Text(
-                                      'Copy',
+                                      ConstantsCommon.copy.tr,
                                       style: TextStyle(color: Colors.white),
                                     ),
                                   ],
@@ -263,7 +265,7 @@ class HomeScreen extends GetView<HomeController> {
                                     ),
                                     SizedBox(width: 8),
                                     Text(
-                                      'Share',
+                                      ConstantsCommon.share.tr,
                                       style: TextStyle(
                                         color: Colors.white,
                                       ),
@@ -301,7 +303,7 @@ class HomeScreen extends GetView<HomeController> {
                                     ),
                                     SizedBox(width: 8),
                                     Text(
-                                      'Stylize',
+                                      ConstantsCommon.stylize.tr,
                                       style: TextStyle(
                                         color: Colors.white,
                                       ),

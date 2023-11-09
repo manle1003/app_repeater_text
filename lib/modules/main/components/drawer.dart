@@ -12,7 +12,6 @@ import 'package:flutter_getx_base/shared/constants/image_constant.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:share_plus/share_plus.dart';
 
 class DrawerBarScreen extends StatelessWidget {
@@ -129,7 +128,7 @@ class DrawerBarScreen extends StatelessWidget {
   }
 
   Container _buildListTile(
-      int index, String title, String iconPath, Function() fuction) {
+      int index, String title, String iconPath, Function() function) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 4.0),
       child: ListTile(
@@ -153,7 +152,7 @@ class DrawerBarScreen extends StatelessWidget {
             fontWeight: FontWeight.w400,
           ),
         ),
-        onTap: fuction,
+        onTap: function,
       ),
     );
   }

@@ -24,7 +24,7 @@ class HistoryScreen extends GetView<HistoryController> {
           drawer: DrawerBarScreen(),
           appBar: AppBar(
             centerTitle: true,
-            title: Text(ConstantsCommon.contact.tr),
+            title: Text('Contact'),
             backgroundColor: appController.isDarkModeOn.value
                 ? Color(0xFF233142)
                 : settingController.isCheckColors.value,

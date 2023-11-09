@@ -95,7 +95,7 @@ class HistoryController extends GetxController {
 
   void saveFavorite(String id) {
     SharedPreferencesManager.instance.changeFavouriteById(id, true);
-    Get.snackbar(ConstantsCommon.success.tr, ConstantsCommon.addSuccess.tr,
+    Get.snackbar('Success', 'Add success',
         snackPosition: SnackPosition.BOTTOM,
         duration: Duration(milliseconds: 900));
   }

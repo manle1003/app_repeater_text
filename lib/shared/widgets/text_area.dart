@@ -66,7 +66,7 @@ class _BodyState extends State<TextArea> {
                   child: TextFormField(
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: ConstantsCommon.enterInput.tr,
+                      hintText: 'Enter input',
                       hintStyle: TextStyle(
                         color: ColorConstants.greyColor.withOpacity(.9),
                       ),
