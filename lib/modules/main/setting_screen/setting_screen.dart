@@ -192,7 +192,7 @@ class SettingScreen extends GetView<SettingController> {
                             ),
                             imageAsset: ImageConstant.iconAboutUs,
                             widgetTitle: Text(
-                              ConstantsCommon.repeatText.tr,
+                              ConstantsCommon.textLooper.tr,
                               style: CustomTextStyles.labelGray600Size18Fw600,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,

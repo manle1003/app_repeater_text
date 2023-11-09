@@ -59,7 +59,7 @@ class DrawerBarScreen extends StatelessWidget {
                 }),
                 Divider(height: 1, color: Colors.grey.withOpacity(.3)),
                 _buildListTile(
-                    4, 'Text Looper', ImageConstant.iconAboutUs,
+                    4, ConstantsCommon.textLooper.tr, ImageConstant.iconAboutUs,
                     () {
                   settingController.isCheckDrawer.value = 4;
                   Get.offAllNamed(Routes.ABOUT_APP_SCREEN);
