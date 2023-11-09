@@ -3,7 +3,6 @@ import 'package:flutter_getx_base/app_controller.dart';
 import 'package:flutter_getx_base/modules/main/components/constants_common.dart';
 import 'package:flutter_getx_base/modules/main/components/drawer.dart';
 import 'package:flutter_getx_base/modules/main/history/history_controller.dart';
-import 'package:flutter_getx_base/modules/main/home_controller.dart';
 import 'package:flutter_getx_base/routes/app_pages.dart';
 import 'package:get/get.dart';
 import '../setting_screen/setting_controller.dart';

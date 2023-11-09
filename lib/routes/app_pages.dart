@@ -1,5 +1,5 @@
-import 'package:flutter_getx_base/modules/main/favorites/favorites_binding.dart';
-import 'package:flutter_getx_base/modules/main/favorites/favorites_screen.dart';
+import 'package:flutter_getx_base/modules/main/change_language/change_language_binding.dart';
+import 'package:flutter_getx_base/modules/main/change_language/change_language_screen.dart';
 import 'package:flutter_getx_base/modules/main/history/history_binding.dart';
 import 'package:flutter_getx_base/modules/main/history/history_screen.dart';
 import 'package:flutter_getx_base/modules/main/home_binding.dart';
@@ -20,11 +20,6 @@ class AppPages {
       name: Routes.SPLASH,
       page: () => const SplashView(),
       binding: SplashBinding(),
-    ),
-    GetPage(
-      name: Routes.FAVOTITES_SCREEN,
-      page: () => FavoriteScreen(),
-      binding: FavoriteBinding(),
     ),
     GetPage(
       name: Routes.HISTORY_SCREEN,
@@ -50,6 +45,11 @@ class AppPages {
       name: Routes.STYLIZE_SCREEN,
       page: () => StylizeScreen(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: Routes.CHANGE_LANGUAGE,
+      page: () => ChangeLanguage(),
+      binding: ChangeLanguageBinding(),
     ),
   ];
 }
