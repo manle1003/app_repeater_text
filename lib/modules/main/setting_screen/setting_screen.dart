@@ -17,6 +17,7 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../../../shared/utils/size_utils.dart';
 import '../../../shared/widgets/show_dialog_upgrade.dart';
 import '../../../theme/theme_helper.dart';
 
@@ -174,7 +175,7 @@ class SettingScreen extends GetView<SettingController> {
                           BuildSettingsItem(
                             onTap: () {
                               Share.share(
-                                "I'm using this incredibly convenient QR code and barcode scanning app. You should give it a try!",
+                                "I'm using this incredibly convenient Repeat Text app. You should give it a try!",
                               );
                             },
                             imageAsset: ImageConstant.iconShare,
@@ -254,6 +255,9 @@ class SettingScreen extends GetView<SettingController> {
                           ),
                         ],
                       ),
+                      SizedBox(
+                        height: getSize(40),
+                      )
                     ],
                   ),
                 ),

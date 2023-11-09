@@ -12,6 +12,8 @@ import 'package:flutter_getx_base/modules/splash/splash_binding.dart';
 import 'package:flutter_getx_base/modules/splash/splash_view.dart';
 import 'package:get/get.dart';
 
+import '../modules/main/setting_screen/about_app_screen.dart';
+
 part 'app_routes.dart';
 
 class AppPages {
@@ -50,6 +52,11 @@ class AppPages {
       name: Routes.CHANGE_LANGUAGE,
       page: () => ChangeLanguage(),
       binding: ChangeLanguageBinding(),
+    ),
+    GetPage(
+      name: Routes.ABOUT_APP_SCREEN,
+      page: () => AboutAppScreen(),
+      binding: SettingBinding(),
     ),
   ];
 }

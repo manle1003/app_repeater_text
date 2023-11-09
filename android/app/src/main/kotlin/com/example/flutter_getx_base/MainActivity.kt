@@ -1,4 +1,4 @@
-package com.example.flutter_getx_base
+package com.pixel.textlooper
 
 import io.flutter.embedding.android.FlutterActivity
 

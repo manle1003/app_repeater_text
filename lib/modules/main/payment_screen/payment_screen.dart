@@ -11,6 +11,7 @@ import 'package:lottie/lottie.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
+import '../../../routes/app_pages.dart';
 import '../../../shared/widgets/show_dialog_upgrade.dart';
 
 class PaymentScreen extends StatefulWidget {
@@ -22,7 +23,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
   bool isCheckedYear = true;
   bool isCheckedMonth = false;
   bool isCheckedLife = false;
-  double totalPrice = 39.99;
+  String totalPrice = '${'upgradeNow'.tr} \$8.99';
 
   final _colors = [
     ColorConstants.backgroundColorButtonGreen.withOpacity(.1),
@@ -38,8 +39,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
     0.0,
     0.0,
   ];
+
   final AppController appController = Get.find();
-  final SettingController settingController = Get.put(SettingController());
+  final SettingController settingController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -75,11 +77,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         Positioned(
                           top: 40,
                           left: 10,
+                          right: 10,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               IconButton(
-                                onPressed: () => Navigator.pop(context),
+                                onPressed: () =>
+                                    Get.offAllNamed(Routes.SETTING_SCREEN),
                                 icon: Icon(
                                   Icons.arrow_back_ios,
                                   color: Colors.white,
@@ -91,7 +95,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               Padding(
                                 padding: const EdgeInsets.only(left: 20),
                                 child: Text(
-                                  'Get unlimited scans'.tr,
+                                  'Easy QR Scanner and Generator',
                                   style: TextStyle(
                                     fontSize: 24,
                                     color: appTheme.gray100,
@@ -105,7 +109,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               Padding(
                                 padding: const EdgeInsets.only(left: 20),
                                 child: Text(
-                                  'Scan, save and export unlimited cards!'.tr,
+                                  'Upgrade to Pro Version and Enjoy More Benefits!'
+                                      .tr,
                                   style: TextStyle(
                                     fontSize: 14,
                                     color: appTheme.gray100,
@@ -132,14 +137,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                 isCheckedMonth = false;
                                 isCheckedLife = false;
                                 isCheckedYear = true;
-                                totalPrice = 39.99;
+                                totalPrice = '${'upgradeNow'.tr} \$8.99';
                               });
                             },
                             child: _pakageCart(
                               context,
-                              'upgrade'.tr,
-                              '\$39.99',
-                              'per year'.tr,
+                              'Remove Ads'.tr,
+                              '\$8.99',
+                              'one-off'.tr,
                               isCheckedYear,
                             ),
                           )),
@@ -151,13 +156,16 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               isCheckedMonth = false;
                               isCheckedLife = true;
                               isCheckedYear = false;
-                              totalPrice = 79.99;
+                              totalPrice =
+                                  settingController.isCheckedRemoveAds.value
+                                      ? 'freeVersion'.tr
+                                      : 'Promote code'.tr;
                             });
                           },
                           child: _pakageCart(
                             context,
-                            'Remove Ads'.tr,
-                            '\$79.99',
+                            'Promote code'.tr,
+                            'free'.tr,
                             'one-off'.tr,
                             isCheckedLife,
                           ),
@@ -165,40 +173,23 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       ),
                     ],
                   ),
-                  // GestureDetector(
-                  //   onTap: () {
-                  //     setState(() {
-                  //       isCheckedMonth = true;
-                  //       isCheckedLife = false;
-                  //       isCheckedYear = false;
-                  //       totalPrice = 3.99;
-                  //     });
-                  //   },
-                  //   child: _pakageCart(
-                  //     context,
-                  //     'Monthly Premium'.tr,
-                  //     '\$3.99',
-                  //     'per month'.tr,
-                  //     isCheckedMonth,
-                  //   ),
-                  // ),
                   SizedBox(
                     height: 16,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40),
-                    child: Text(
-                      'Voted best card scanner app in the market'.tr,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: appController.isDarkModeOn.value
-                            ? Colors.white
-                            : appTheme.black900,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(horizontal: 40),
+                  //   child: Text(
+                  //     'Voted best card scanner app'.tr,
+                  //     style: TextStyle(
+                  //       fontSize: 16,
+                  //       color: appController.isDarkModeOn.value
+                  //           ? Colors.white
+                  //           : appTheme.black900,
+                  //       fontWeight: FontWeight.w500,
+                  //     ),
+                  //     textAlign: TextAlign.center,
+                  //   ),
+                  // ),
                   SizedBox(
                     height: 16,
                   ),
@@ -286,17 +277,17 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     height: 16,
                   ),
                   itemPaymentWidget(
-                      'Card scans'.tr,
+                      'Scan QR Code'.tr,
                       ColorConstants.backgroundColorButtonGreen,
                       'Unlimited'.tr),
                   itemPaymentWidget('Ads', appTheme.whiteA700, 'Free'.tr),
                   // itemPaymentWidget('Integations',
                   //     ColorConstants.backgroundColorButtonGreen, 'Unlimited'),
                   // itemPaymentWidget('Team sharing', appTheme.white),
-                  itemPaymentWidget(
-                      'Save to contacts'.tr,
-                      ColorConstants.backgroundColorButtonGreen,
-                      'Unlimited'.tr),
+                  // itemPaymentWidget(
+                  //     'Save to contacts'.tr,
+                  //     ColorConstants.backgroundColorButtonGreen,
+                  //     'Unlimited'.tr),
                   SizedBox(
                     height: 16,
                   ),
@@ -393,49 +384,20 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 child: GestureDetector(
                   onTap: () {
                     isCheckedYear
-                        ? Get.snackbar('Feature is comming soon', '',
-                            snackPosition: SnackPosition.BOTTOM,
-                            colorText: appTheme.whiteA700,
-                            backgroundColor: ColorConstants
-                                .backgroundColorButtonGreen
-                                .withOpacity(.5))
-                        : settingController.isCheckedRemoveAds.value
-                            ? showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return ShowDialogUpgrade(
-                                    codeController:
-                                        settingController.removeAdsController,
-                                    // themeMode: themeMode,
-                                    constGrey: Colors.grey,
-                                    hiddenTextField: false,
-                                  );
-                                },
-                              )
-                            : showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return ShowDialogUpgrade(
-                                    codeController:
-                                        settingController.removeAdsController,
-                                    // themeMode: themeMode,
-                                    constGrey: Colors.grey,
-                                    hiddenTextField: true,
-                                  );
-                                },
+                        ? settingController.launchURL(
+                            'https://play.google.com/store/apps/details?id=com.pixel.codescannerpro')
+                        : showDialog(
+                            context: context,
+                            builder: (context) {
+                              return ShowDialogUpgrade(
+                                codeController:
+                                    settingController.removeAdsController,
+                                // themeMode: themeMode,
+                                constGrey: Colors.grey,
+                                hiddenTextField: true,
                               );
-
-                    // showDialog(
-                    //     context: context,
-                    //     builder: (context) {
-                    //       return ShowDialogUpgrade(
-                    //         codeController:
-                    //             settingController.removeAdsController,
-                    //         constGrey: Colors.grey,
-                    //         hiddenTextField: true,
-                    //       );
-                    //     },
-                    //   );
+                            },
+                          );
                   },
                   child: Container(
                     padding: EdgeInsets.all(12),
@@ -447,7 +409,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        ' ${'upgradeNow'.tr} \$$totalPrice',
+                        totalPrice,
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
                             color: appTheme.whiteA700),
@@ -540,7 +502,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             ? ColorConstants.backgroundColorButtonGreen
                             : appController.isDarkModeOn.value
                                 ? appTheme.gray100
-                                : appTheme.blue900,
+                                : appTheme.gray90099,
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
                       ),

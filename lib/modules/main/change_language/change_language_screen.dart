@@ -4,7 +4,7 @@ import 'package:flutter_getx_base/modules/main/setting_screen/setting_controller
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-import '../../../lang/translation_service.dart';
+import '../components/drawer.dart';
 import 'change_language_controller.dart';
 import 'language_widget.dart';
 
@@ -12,20 +12,12 @@ class ChangeLanguage extends GetView<ChangeLanguageController> {
   @override
   Widget build(BuildContext context) {
     final AppController appController = Get.find();
-    final SettingController settingController = Get.find();
+    final SettingController settingController = Get.put(SettingController());
 
     return Scaffold(
+      drawer: DrawerBarScreen(),
       appBar: AppBar(
         centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
-          onPressed: () {
-            Get.back();
-            TranslationService.changeLocale(
-              controller.locateChangeLanguage.value,
-            );
-          },
-        ),
         title: Obx(() => Text(controller.languageTitle.value)),
         backgroundColor: appController.isDarkModeOn.value
             ? Color(0xFF233142)

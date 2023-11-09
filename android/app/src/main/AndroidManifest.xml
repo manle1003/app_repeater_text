@@ -9,7 +9,7 @@
 
     
     <application
-        android:label="Scan QR Code "
+        android:label="Text Looper"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

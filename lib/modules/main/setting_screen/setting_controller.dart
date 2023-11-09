@@ -1,8 +1,11 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_base/shared/constants/colors.dart';
 import 'package:flutter_getx_base/shared/sharepreference/sharepreference.dart';
 import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingController extends GetxController {
   final RxBool isCheckTheme = false.obs;
@@ -52,6 +55,14 @@ class SettingController extends GetxController {
       } else {
         listCheckStatus[i] = false;
       }
+    }
+  }
+
+  void launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
     }
   }
 
