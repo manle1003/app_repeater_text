@@ -3,7 +3,9 @@ const Map<String, String> en = {
   'btnSignUp': 'Sign Up',
   'someThingWrongPlsTryAgain': 'Something went wrong, please try again',
   'tittleExitApp': 'Would you like to exit the application?',
+  'home': 'Home',
   'new': 'News',
+  'more': "More",
   'event': 'Event',
   'reward': 'Reward',
   'profile': 'Profile',
@@ -24,26 +26,15 @@ const Map<String, String> en = {
 
   //Drawer,
   'scan': 'Scan',
-  'scanImage': 'Scan Image',
+  'scanImage': 'Scan image',
   'favourites': 'Favourites',
   'history': 'History',
   'myQRCode': 'My QR code',
   'createQr': 'Create QR',
-  'setting': 'Setting',
-  'upgrade': 'Upgrade',
-
-  'home': 'Home',
+  'setting': 'Settings',
   'share': 'Share',
-  'feedback': 'Feedback',
-  'contactUs': 'Contact us',
-  'changeLanguage': 'Change language',
   'aboutUs': 'About us',
-  'more': 'More',
-  'selectLanguage': 'Select language',
-  'typeContent': 'Type your content',
-  'termsOfUse': 'Terms of use',
-  'privacyPolicy': 'Privacy policy',
-  'credits': 'Credits',
+  'upgrade': 'Upgrade',
 
   //Favourites,
   'delete': 'Delete',
@@ -54,6 +45,10 @@ const Map<String, String> en = {
   'cancel': 'Cancel',
   'ok': 'Ok',
 
+  // Dialog
+  "nameQR": "Title",
+  "enterYourTitle": "Enter your title",
+
   //History,
   'today': 'Today',
   'listHistory': 'History list',
@@ -61,7 +56,7 @@ const Map<String, String> en = {
 
   //My Qr Code,
   'myQR': 'My QR',
-  'createYourQR': 'Create your QR code Enter only the data you want to share',
+  'createYourQR': 'Create your QR code.\nEnter only the data you want to share',
   'fullName': 'Fullname',
   'company': 'Company',
   'Address': 'Address',
@@ -69,6 +64,7 @@ const Map<String, String> en = {
   'email': 'Email',
   'enterInput': 'Enter input',
   'save': 'Save',
+  'saveImage': 'Image is saved!',
   'fullNameRequired': 'Fullname is required',
 
   //Create Qr Code,
@@ -107,7 +103,8 @@ const Map<String, String> en = {
   'vibrations': 'Vibrations',
   'darkMode': 'Dark mode',
   'system': 'System',
-  'stylize': 'Stylize',
+  'changeLanguage': 'Change language',
+  'copySuccess': 'Copy success!',
 
   // About App,
   "Voted best Scan QR Code app in the market":
@@ -137,14 +134,54 @@ const Map<String, String> en = {
   "commentFive":
       "This app has significantly improved my productivity. I've recommended it to all my friends, and they love it too. It's a must-have for anyone looking to streamline their tasks.",
   "upgradeNow": "UPGRADE NOW FOR",
-  "Scan QR Code users": "Truy cập người dùng Scan QR Code",
+  "Scan QR Code users": "Scan QR Code users",
   "Get unlimited scans": "Get unlimited scans",
   "Scan, save and export nunlimited cards!":
       "Scan, save and export\nunlimited cards!",
   "Yearly Premium": "Yearly Premium",
   "Remove Ads": "Remove Ads",
-  "per year": "per year",
+  "Promote code": "Promote code",
   "Lifetime Premium": "Lifetime Premium",
   "Monthly Premium": "Monthly Premium",
+  "free": "Free",
   "per month": "per month",
+  "search": "Search",
+  "copy": "Copy",
+  "scanDetail": "Scan detail",
+  "enterCode": "Enter code",
+  "removeFavorite": "Removed success!",
+  "easyScanPro": "Easy Scan Pro!",
+  "freeVersion": "Free version",
+  "Upgrade to Pro Version and Enjoy More Benefits!":
+      "Upgrade to Pro Version and Enjoy More Benefits!",
+  "styleMyQrCode": "Setting style my QR code",
+  'appInHouse': 'Ads in house',
+  'style': 'Style',
+  "Generate code": "Generate code",
+
+  // Ads in house
+  "description_app_01":
+      "Providing lightning-fast scanning, our Barcode & QR Scanner is a must-have for every Android user.",
+  "description_app_02":
+      "Easily capture and organize business card information, enhance your network, and take your professional connections to the next level.",
+  "description_app_03":
+      "Visit card scanners are the right solution to streamline your contact management.",
+  "downloadapp": "Download the app",
+  "useapp": "Use App",
+  "peopleUseThis": "people use this",
+  "shareApp":
+      "I'm using this incredibly convenient QR code and barcode scanning app. You should give it a try!",
+  "inAppReview": "Rating app",
+
+  //preytty
+  "smooth": "Smooth",
+  "roundedRectangle": "Rounded rectangle",
+  "colored": "Colored",
+  "roundedCorners": "Rounded corners",
+  "image": "Image",
+  "imagePosition": "Image position",
+  "embedded": "Embedded",
+  "foreground": "Foreground",
+  "background": "Background",
+  "language": "Language",
 };

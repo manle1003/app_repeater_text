@@ -34,6 +34,17 @@ class CustomTextStyles {
           18,
         ),
       );
+
+  static get labelGray600Size18Fw600 =>
+      theme.textTheme.labelLarge!.inter.copyWith(
+        color: appController.isDarkModeOn.value
+            ? appTheme.whiteA700
+            : appTheme.gray600,
+        fontSize: getFontSize(
+          18,
+        ),
+        fontWeight: FontWeight.w600,
+      );
   static get bodyMediumGray600 => theme.textTheme.bodyMedium!.copyWith(
         color: appTheme.gray600,
       );

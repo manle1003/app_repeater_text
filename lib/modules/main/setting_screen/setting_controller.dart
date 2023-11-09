@@ -55,6 +55,11 @@ class SettingController extends GetxController {
     }
   }
 
+  void setDefaultDecoration() async {
+    isCheckColors.value = await SharedPreferencesManager.instance
+        .loadColorFromPreferences("isCheckColors");
+  }
+
   void getVersionCode() {
     PackageInfo.fromPlatform().then((PackageInfo packageInfo) {
       versionCode = packageInfo.version;

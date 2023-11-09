@@ -8,14 +8,16 @@ import 'package:flutter_getx_base/modules/main/home_controller.dart';
 import 'package:flutter_getx_base/modules/main/setting_screen/setting_controller.dart';
 import 'package:flutter_getx_base/routes/app_pages.dart';
 import 'package:flutter_getx_base/shared/constants/colors.dart';
+import 'package:flutter_getx_base/shared/constants/image_constant.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:share_plus/share_plus.dart';
+
 class DrawerBarScreen extends StatelessWidget {
   final SettingController settingController = Get.put(SettingController());
-  final HomeController homeController =
-      Get.put(HomeController ());
+  final HomeController homeController = Get.put(HomeController());
   final AppController appController = Get.find();
 
   @override
@@ -34,69 +36,73 @@ class DrawerBarScreen extends StatelessWidget {
                 _buildListTile(
                     0, ConstantsCommon.home.tr, 'assets/icons/scan.svg', () {
                   settingController.isCheckDrawer.value = 0;
-                  Get.offAllNamed(Routes.QR_CODE);
-                }),
-                Divider(height: 1, color: Colors.grey.withOpacity(.3)),
-                _buildListTile(1, ConstantsCommon.share.tr,
-                    'assets/icons/img_galary.svg', () {
-                  settingController.isCheckDrawer.value = 1;
-                }),
-                Divider(height: 1, color: Colors.grey.withOpacity(.3)),
-                _buildListTile(2, ConstantsCommon.feedback.tr,
-                    'assets/icons/img_heart.svg', () {
-                  settingController.isCheckDrawer.value = 2;
-                  Get.offAllNamed(Routes.FAVOTITES_SCREEN);
-                }),
-                Divider(height: 1, color: Colors.grey.withOpacity(.3)),
-                _buildListTile(3, ConstantsCommon.contactUs.tr,
-                    'assets/icons/ic_history.svg', () {
-                  settingController.isCheckDrawer.value = 3;
-                  Get.offAllNamed(Routes.HISTORY_SCREEN);
-                }),
-                Divider(height: 1, color: Colors.grey.withOpacity(.3)),
-                _buildListTile(4, ConstantsCommon.changeLanguage.tr,
-                    'assets/icons/ic_qr_code.svg', () {
-                  settingController.isCheckDrawer.value = 4;
-                  Get.offAllNamed(Routes.MY_QR_CODE_SCREEN);
-                }),
-                Divider(height: 1, color: Colors.grey.withOpacity(.3)),
-                _buildListTile(5, ConstantsCommon.aboutUs.tr,
-                    'assets/icons/ic_create_qr.svg', () {
-                  settingController.isCheckDrawer.value = 5;
-                  Get.offAllNamed(Routes.CREATE_QR_CODE_SCREEN);
-                }),
-                Divider(height: 1, color: Colors.grey.withOpacity(.3)),
-                _buildListTile(6, ConstantsCommon.termsOfUse.tr,
-                    'assets/icons/ic_setting.svg', () {
-                  settingController.isCheckDrawer.value = 6;
-                  Get.toNamed(Routes.SETTING_SCREEN);
-                }),
-                Divider(height: 1, color: Colors.grey.withOpacity(.3)),
-                // _buildListTile(
-                //     7, ConstantsCommon.share.tr, ImageConstant.icShare, () {
-                //   settingController.isCheckDrawer.value = 7;
-                //   Share.share(
-                //     "I'm using this incredibly convenient QR code and barcode scanning app. You should give it a try!",
-                //   );
-                // }),
-                // Divider(height: 1, color: Colors.grey.withOpacity(.3)),
-                _buildListTile(8, ConstantsCommon.privacyPolicy.tr,
-                    'assets/icons/ic_about_us.svg', () {
-                  settingController.isCheckDrawer.value = 8;
-                  Get.toNamed(
-                    Routes.ABOUT_APP_SCREEN,
-                  );
+                  Get.offAllNamed(Routes.HOME);
                 }),
                 Divider(height: 1, color: Colors.grey.withOpacity(.3)),
                 _buildListTile(
-                  9,
-                  ConstantsCommon.credits.tr,
-                  'assets/icons/ic_upgrade.svg',
-                  () {
-                    settingController.isCheckDrawer.value = 9;
-                    Get.toNamed(Routes.PAYMENT_SCREEN);
-                  },
-                ),
+                    1, ConstantsCommon.share.tr, ImageConstant.icShare, () {
+                  settingController.isCheckDrawer.value = 1;
+                  Share.share(
+                    "I'm using this incredibly convenient QR code and barcode scanning app. You should give it a try!",
+                  );
+                }),
+                Divider(height: 1, color: Colors.grey.withOpacity(.3)),
+                _buildListTile(2, ConstantsCommon.setting.tr,
+                    'assets/icons/ic_setting.svg', () {
+                  settingController.isCheckDrawer.value = 2;
+                  Get.toNamed(Routes.SETTING_SCREEN);
+                }),
+                // Divider(height: 1, color: Colors.grey.withOpacity(.3)),
+                // _buildListTile(2, ConstantsCommon.feedback.tr,
+                //     'assets/icons/img_heart.svg', () {
+                //   settingController.isCheckDrawer.value = 2;
+                //   Get.offAllNamed(Routes.FAVOTITES_SCREEN);
+                // }),
+                // Divider(height: 1, color: Colors.grey.withOpacity(.3)),
+                // _buildListTile(3, ConstantsCommon.contactUs.tr,
+                //     'assets/icons/ic_history.svg', () {
+                //   settingController.isCheckDrawer.value = 3;
+                //   Get.offAllNamed(Routes.HISTORY_SCREEN);
+                // }),
+                // Divider(height: 1, color: Colors.grey.withOpacity(.3)),
+                // _buildListTile(4, ConstantsCommon.changeLanguage.tr,
+                //     'assets/icons/ic_qr_code.svg', () {
+                //   settingController.isCheckDrawer.value = 4;
+                //   Get.offAllNamed(Routes.MY_QR_CODE_SCREEN);
+                // }),
+                // Divider(height: 1, color: Colors.grey.withOpacity(.3)),
+                // _buildListTile(5, ConstantsCommon.aboutUs.tr,
+                //     'assets/icons/ic_create_qr.svg', () {
+                //   settingController.isCheckDrawer.value = 5;
+                //   Get.offAllNamed(Routes.CREATE_QR_CODE_SCREEN);
+                // }),
+
+                // Divider(height: 1, color: Colors.grey.withOpacity(.3)),
+                // // _buildListTile(
+                // //     7, ConstantsCommon.share.tr, ImageConstant.icShare, () {
+                // //   settingController.isCheckDrawer.value = 7;
+                // //   Share.share(
+                // //     "I'm using this incredibly convenient QR code and barcode scanning app. You should give it a try!",
+                // //   );
+                // // }),
+                // // Divider(height: 1, color: Colors.grey.withOpacity(.3)),
+                // _buildListTile(8, ConstantsCommon.privacyPolicy.tr,
+                //     'assets/icons/ic_about_us.svg', () {
+                //   settingController.isCheckDrawer.value = 8;
+                //   Get.toNamed(
+                //     Routes.ABOUT_APP_SCREEN,
+                //   );
+                // }),
+                // Divider(height: 1, color: Colors.grey.withOpacity(.3)),
+                // _buildListTile(
+                //   9,
+                //   ConstantsCommon.credits.tr,
+                //   'assets/icons/ic_upgrade.svg',
+                //   () {
+                //     settingController.isCheckDrawer.value = 9;
+                //     Get.toNamed(Routes.PAYMENT_SCREEN);
+                //   },
+                // ),
               ],
             ),
           ),

@@ -183,4 +183,30 @@ class SharedPreferencesManager {
     final color = Color(colorValue ?? Colors.transparent.value);
     return color;
   }
+
+  Future<int> getIndexChangeLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    int index = prefs.getInt('indexChangeLanguage') ?? 0;
+
+    return index;
+  }
+
+  Future<void> setLocalTitleChangeLanguage(String localTitle) async {
+    final prefs = await SharedPreferences.getInstance();
+    final localTitleChange = localTitle;
+    await prefs.setString('localTitle', localTitleChange);
+  }
+
+  Future<String> getLocalTitleChangeLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    String localTitle = prefs.getString('localTitle') ?? 'English';
+
+    return localTitle;
+  }
+
+  Future<void> setIndexChangeLanguage(int index) async {
+    final prefs = await SharedPreferences.getInstance();
+    final indexChangeLanguage = index;
+    await prefs.setInt('indexChangeLanguage', indexChangeLanguage);
+  }
 }
