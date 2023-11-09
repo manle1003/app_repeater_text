@@ -4,6 +4,7 @@ import 'package:flutter_getx_base/shared/sharepreference/sharepreference.dart';
 import 'package:flutter_getx_base/shared/utils/size_utils.dart';
 import 'package:get/get.dart';
 
+import '../../../lang/translation_service.dart';
 import 'change_language_controller.dart';
 
 class LanguageWidget extends StatelessWidget {
@@ -26,6 +27,9 @@ class LanguageWidget extends StatelessWidget {
     return InkWell(
       onTap: () {
         // TranslationService.changeLocale(locale);
+        TranslationService.changeLocale(
+          locale,
+        );
         changeLanguageController.locateChangeLanguage.value = locale;
         changeLanguageController.languageTitle.value = label;
         changeLanguageController.indexChangeLanguage.value = index;

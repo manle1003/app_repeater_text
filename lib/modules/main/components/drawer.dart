@@ -42,7 +42,7 @@ class DrawerBarScreen extends StatelessWidget {
                     1, ConstantsCommon.share.tr, ImageConstant.icShare, () {
                   settingController.isCheckDrawer.value = 1;
                   Share.share(
-                    "I'm using this incredibly convenient QR code and barcode scanning app. You should give it a try!",
+                    "I'm using this incredibly convenient Repeat Text app. You should give it a try!",
                   );
                 }),
                 Divider(height: 1, color: Colors.grey.withOpacity(.3)),
@@ -51,18 +51,19 @@ class DrawerBarScreen extends StatelessWidget {
                   settingController.isCheckDrawer.value = 2;
                   Get.toNamed(Routes.SETTING_SCREEN);
                 }),
-                // Divider(height: 1, color: Colors.grey.withOpacity(.3)),
-                // _buildListTile(2, ConstantsCommon.feedback.tr,
-                //     'assets/icons/img_heart.svg', () {
-                //   settingController.isCheckDrawer.value = 2;
-                //   Get.offAllNamed(Routes.FAVOTITES_SCREEN);
-                // }),
-                // Divider(height: 1, color: Colors.grey.withOpacity(.3)),
-                // _buildListTile(3, ConstantsCommon.contactUs.tr,
-                //     'assets/icons/ic_history.svg', () {
-                //   settingController.isCheckDrawer.value = 3;
-                //   Get.offAllNamed(Routes.HISTORY_SCREEN);
-                // }),
+                Divider(height: 1, color: Colors.grey.withOpacity(.3)),
+                _buildListTile(3, ConstantsCommon.changeLanguage.tr,
+                    ImageConstant.iconLanguage, () {
+                  settingController.isCheckDrawer.value = 3;
+                  Get.offAllNamed(Routes.CHANGE_LANGUAGE);
+                }),
+                Divider(height: 1, color: Colors.grey.withOpacity(.3)),
+                _buildListTile(
+                    4, 'Text Looper', ImageConstant.iconAboutUs,
+                    () {
+                  settingController.isCheckDrawer.value = 4;
+                  Get.offAllNamed(Routes.ABOUT_APP_SCREEN);
+                }),
                 // Divider(height: 1, color: Colors.grey.withOpacity(.3)),
                 // _buildListTile(4, ConstantsCommon.changeLanguage.tr,
                 //     'assets/icons/ic_qr_code.svg', () {

@@ -11,6 +11,10 @@ class ConstantsCommon {
   static String stylize = 'stylize';
 
   //Drawers
+  static String scan = 'scan';
+  static String scanImage = 'scanImage';
+  static String favourites = 'favourites';
+  static String createQr = 'createQr';
   static String setting = 'setting';
   static String feedback = 'feedback';
   static String contactUs = 'contactUs';
@@ -24,4 +28,5 @@ class ConstantsCommon {
   static String system = 'system';
   static String changeLanguage = 'changeLanguage';
   static String upgrade = 'upgrade';
+  static String required = 'required';
 }
