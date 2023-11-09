@@ -15,6 +15,8 @@ const Map<String, String> vi = {
   'feedback': 'Phản hồi',
   'contactUs': 'Liên hệ với chúng tôi',
   'aboutUs': 'Về chúng tôi',
+  'textLooper': 'Vòng lặp văn bản',
+
 
   //Setting,
   'colorBoard': 'Bảng màu',
@@ -91,4 +93,7 @@ const Map<String, String> vi = {
       "Tôi đang sử dụng ứng dụng quét mã vạch và mã QR cực kỳ tiện lợi này. Bạn nên dùng thử!",
   "inAppReview": "Đánh giá ứng dụng",
   "language": "Ngôn ngữ",
+
+   //Text Looper screen
+  "version": "Phiên bản",
 };

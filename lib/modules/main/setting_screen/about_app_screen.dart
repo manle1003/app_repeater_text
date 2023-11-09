@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_base/modules/main/components/constants_common.dart';
 import 'package:flutter_getx_base/shared/constants/colors.dart';
 import 'package:flutter_getx_base/shared/widgets/custom_text_style.dart';
 import 'package:flutter_getx_base/theme/theme_helper.dart';
@@ -19,7 +20,7 @@ class AboutAppScreen extends StatelessWidget {
       drawer: DrawerBarScreen(),
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Text Looper'),
+        title: Text(ConstantsCommon.textLooper.tr),
         backgroundColor: appController.isDarkModeOn.value
             ? Color(0xFF233142)
             : settingController.isCheckColors.value,
@@ -34,14 +35,14 @@ class AboutAppScreen extends StatelessWidget {
                 height: 10,
               ),
               Text(
-                'Text Looper',
+                ConstantsCommon.textLooper.tr,
                 style: CustomTextStyles.labelBlack500Size24Fw600,
               ),
               SizedBox(
                 height: 6,
               ),
               Text(
-                '${'Version'.tr} ${settingController.versionCode}',
+                '${ConstantsCommon.version.tr} ${settingController.versionCode}',
                 style: TextStyle(
                     color: appController.isDarkModeOn.value
                         ? appTheme.gray100
@@ -53,7 +54,7 @@ class AboutAppScreen extends StatelessWidget {
                 height: 32,
               ),
               Text(
-                'contentAboutAppFirst'.tr,
+                ConstantsCommon.contentAboutAppFirst.tr,
                 style: TextStyle(
                   color: appController.isDarkModeOn.value
                       ? appTheme.gray100
@@ -67,7 +68,7 @@ class AboutAppScreen extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text("keyFeature".tr,
+                child: Text(ConstantsCommon.keyFeature.tr,
                     style: CustomTextStyles.labelBlack500Size18Fw600),
               ),
               SizedBox(
@@ -80,25 +81,25 @@ class AboutAppScreen extends StatelessWidget {
                   // mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      "contentKeyFeatureFirst".tr,
+                      ConstantsCommon.contentKeyFeatureFirst.tr,
                       style: CustomTextStyles.labelGray600Size14Fw600,
                     ),
                     SizedBox(
                       height: 6,
                     ),
                     Text(
-                      "contentKeyFeatureTow".tr,
+                      ConstantsCommon.contentKeyFeatureTow.tr,
                       style: CustomTextStyles.labelGray600Size14Fw600,
                     ),
                     SizedBox(
                       height: 6,
                     ),
                     Text(
-                      "contentKeyFeatureThree".tr,
+                      ConstantsCommon.contentKeyFeatureThree.tr,
                       style: CustomTextStyles.labelGray600Size14Fw600,
                     ),
                     Text(
-                      "contentKeyFeatureFor".tr,
+                      ConstantsCommon.contentKeyFeatureFor.tr,
                       style: CustomTextStyles.labelGray600Size14Fw600,
                     ),
                   ],
@@ -108,7 +109,7 @@ class AboutAppScreen extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                "contentAboutAppp".tr,
+                ConstantsCommon.contentAboutAppp.tr,
                 style: CustomTextStyles.labelBlack500Size18Fw600,
               ),
             ],
