@@ -6,7 +6,7 @@ class ImageConstant {
 
   static String iconBottomEvent = 'assets/icons/ic_bottom_event.svg';
 
-  static String iconBottomHome = 'assets/icons/ic_bottom_home.svg';
+  static String iconBottomHome = 'assets/icons/ic_home.svg';
 
   static String iconBottomRewardBold = 'assets/icons/ic_bottom_reward_bold.svg';
 

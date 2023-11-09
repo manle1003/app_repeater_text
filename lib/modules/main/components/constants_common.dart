@@ -20,6 +20,7 @@ class ConstantsCommon {
   static String contactUs = 'contactUs';
   static String aboutUs = 'aboutUs';
   static String textLooper = 'textLooper';
+  static String policy = 'policy';
 
   //Setting
   static String colorBoard = 'colorBoard';
@@ -60,4 +61,13 @@ class ConstantsCommon {
   static String upgradePro = 'Upgrade to Pro Version and Enjoy More Benefits!';
   static String appInHouse = 'appInHouse';
   static String version = 'version';
+  
+  // Ads in house
+  static String description_app_01 = 'description_app_01';
+  static String description_app_02 = 'description_app_02';
+  static String description_app_03 = 'description_app_03';
+  static String downloadapp = 'downloadapp';
+  static String useapp = 'useapp';
+  static String peopleUseThis = 'peopleUseThis';
+  static String inAppReview = 'inAppReview';
 }

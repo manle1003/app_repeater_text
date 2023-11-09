@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_base/app_controller.dart';
+import 'package:flutter_getx_base/routes/routes.dart';
 import 'package:flutter_getx_base/shared/constants/colors.dart';
 import 'package:flutter_getx_base/shared/widgets/custom_text_style.dart';
 import 'package:flutter_getx_base/theme/theme_helper.dart';
@@ -31,7 +32,7 @@ class ShowDialogUpgrade extends StatefulWidget {
 class _ShowDialogUpgradeState extends State<ShowDialogUpgrade> {
   final GlobalKey<FormState> codeFormKey = GlobalKey<FormState>();
   final AppController appController = Get.find();
-  final SettingController settingController = Get.put(SettingController());
+  final SettingController settingController = Get.find();
 
   int count = 0;
   @override
@@ -56,7 +57,7 @@ class _ShowDialogUpgradeState extends State<ShowDialogUpgrade> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         widget.hiddenTextField
-                            ? Text('removeAds'.tr,
+                            ? Text('Promote code'.tr,
                                 style:
                                     CustomTextStyles.labelBlack500Size16Fw500)
                             : Text(
@@ -177,8 +178,7 @@ class _ShowDialogUpgradeState extends State<ShowDialogUpgrade> {
                                           'nineplus@2023') {
                                         settingController.saveRemoveAds(true);
                                         widget.codeController.clear();
-
-                                        Get.back();
+                                        Get.offAllNamed(Routes.SETTING_SCREEN);
                                       } else {
                                         settingController.saveRemoveAds(false);
                                         widget.codeController.clear();

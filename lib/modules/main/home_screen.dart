@@ -27,181 +27,215 @@ class HomeScreen extends GetView<HomeController> {
       onWillPop: () async {
         return controller.onWillPop();
       },
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        key: controller.scaffoldKey,
-        drawer: SizedBox(
-          width: MediaQuery.of(context).size.width * 0.75,
-          child: DrawerBarScreen(),
-        ),
-        appBar: AppBar(
-          leading: IconButton(
-            icon: Transform.scale(
-              scale: 0.7,
-              child: SvgPicture.asset(
-                'assets/icons/ic_menu_vip.svg',
-                color: ColorConstants.white,
-              ),
-            ),
-            onPressed: () {
-              controller.openDrawer();
-            },
+      child: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Scaffold(
+          resizeToAvoidBottomInset: false,
+          key: controller.scaffoldKey,
+          drawer: SizedBox(
+            width: MediaQuery.of(context).size.width * 0.75,
+            child: DrawerBarScreen(),
           ),
-          centerTitle: true,
-          title: Text(
-            ConstantsCommon.home.tr,
-            style: CustomTextStyles.labelWhite700Size18Fw600,
-          ),
-          actions: [
-            IconButton(
-              icon: Icon(
-                Icons.share,
-                color: ColorConstants.white,
+          appBar: AppBar(
+            leading: IconButton(
+              icon: Transform.scale(
+                scale: 0.7,
+                child: SvgPicture.asset(
+                  'assets/icons/ic_menu_vip.svg',
+                  color: ColorConstants.white,
+                ),
               ),
               onPressed: () {
-                Share.share(
-                  "I'm using this incredibly convenient Repeat Text app. You should give it a try!",
-                );
+                controller.openDrawer();
               },
             ),
-          ],
-          backgroundColor: ColorConstants.backgroundColorButtonGreen,
-        ),
-        body: Stack(
-          children: [
-            SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  bottom: 120,
-                  top: 20,
-                  right: 20,
-                  left: 20,
+            centerTitle: true,
+            title: Text(
+              ConstantsCommon.home.tr,
+              style: CustomTextStyles.labelWhite700Size18Fw600,
+            ),
+            actions: [
+              IconButton(
+                icon: Icon(
+                  Icons.share,
+                  color: ColorConstants.white,
                 ),
-                child: Column(
-                  children: [
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        ConstantsCommon.enterText.tr,
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                        textAlign: TextAlign.left,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 2,
-                    ),
-                    Form(
-                      key: controller.textLooperFormKey,
-                      child: InputField(
-                        hintText: ConstantsCommon.typeContent.tr,
-                        suffixIcon: IconButton(
-                          onPressed: controller.clearText,
-                          icon: Icon(
-                            Icons.close,
+                onPressed: () {
+                  Share.share(
+                    "I'm using this incredibly convenient Repeat Text app. You should give it a try!",
+                  );
+                },
+              ),
+            ],
+            backgroundColor: appController.isDarkModeOn.value
+                ? Color(0xFF233142)
+                : settingController.isCheckColors.value,
+          ),
+          body: Stack(
+            children: [
+              SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    bottom: 120,
+                    top: 20,
+                    right: 20,
+                    left: 20,
+                  ),
+                  child: Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          ConstantsCommon.enterText.tr,
+                          style: TextStyle(
                             color: Colors.grey,
-                            size: 18,
                           ),
+                          textAlign: TextAlign.left,
                         ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return ConstantsCommon.required.tr;
-                          }
-                          return null;
-                        },
-                        controller: controller.fieldText,
                       ),
-                    ),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: InputField(
-                            hintText: '',
-                            keyboardType: TextInputType.number,
-                            controller: controller.countText,
-                          ),
-                        ),
-                        Obx(
-                          () => Expanded(
-                            flex: 2,
-                            child: Row(
-                              children: [
-                                Theme(
-                                  data: ThemeData(
-                                    unselectedWidgetColor: appTheme.gray400,
-                                  ),
-                                  child: Checkbox.adaptive(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(80.0),
-                                    ),
-                                    value: controller.isChecked.value,
-                                    onChanged: (bool? value) {
-                                      controller.isChecked.value = value!;
-                                    },
-                                    activeColor: ColorConstants
-                                        .backgroundColorButtonGreen,
-                                    checkColor: ColorConstants.backgroundColor,
-                                  ),
-                                ),
-                                Flexible(
-                                  child: Text(
-                                    ConstantsCommon.repeatNewLine.tr,
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                )
-                              ],
+                      SizedBox(
+                        height: 6,
+                      ),
+                      Form(
+                        key: controller.textLooperFormKey,
+                        child: InputField(
+                          checkBackgroundColorTextfield: true,
+                          hintText: ConstantsCommon.typeContent.tr,
+                          suffixIcon: IconButton(
+                            onPressed: controller.clearText,
+                            icon: Icon(
+                              Icons.close,
+                              color: Colors.grey,
+                              size: 18,
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 12),
-                    ElevatedButton(
-                      onPressed: () {
-                        controller.viewListRepeat();
-                      },
-                      child: Text(
-                        ConstantsCommon.repeatText.tr,
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        primary: ColorConstants.backgroundColorButtonGreen,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return ConstantsCommon.required.tr;
+                            }
+                            return null;
+                          },
+                          controller: controller.fieldText,
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      height: 360,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
+                      SizedBox(
+                        height: 12,
                       ),
-                      child: Obx(
-                        () => Column(
-                          children: [
-                            Expanded(
-                              child: controller.isChecked.value
-                                  ? Scrollbar(
-                                      child: ListView.builder(
-                                        itemExtent: 30,
-                                        padding:
-                                            const EdgeInsets.only(bottom: 10),
-                                        itemCount: controller.listItems.length,
-                                        itemBuilder:
-                                            (BuildContext context, int index) {
-                                          return Obx(
-                                            () => ListTile(
-                                              title: Text(
-                                                controller.listItems[index],
+                      Row(
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: InputField(
+                              hintText: '',
+                              keyboardType: TextInputType.number,
+                              checkBackgroundColorTextfield: true,
+                              controller: controller.countText,
+                            ),
+                          ),
+                          Obx(
+                            () => Expanded(
+                              flex: 2,
+                              child: Row(
+                                children: [
+                                  Theme(
+                                    data: ThemeData(
+                                      unselectedWidgetColor: appTheme.gray400,
+                                    ),
+                                    child: Checkbox.adaptive(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(80.0),
+                                      ),
+                                      value: controller.isChecked.value,
+                                      onChanged: (bool? value) {
+                                        controller.isChecked.value = value!;
+                                      },
+                                      activeColor: ColorConstants
+                                          .backgroundColorButtonGreen,
+                                      checkColor:
+                                          ColorConstants.backgroundColor,
+                                    ),
+                                  ),
+                                  Flexible(
+                                    child: Text(
+                                      ConstantsCommon.repeatNewLine.tr,
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 12),
+                      ElevatedButton(
+                        onPressed: () {
+                          controller.viewListRepeat();
+                        },
+                        child: Text(
+                          ConstantsCommon.repeatText.tr,
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          primary: ColorConstants.backgroundColorButtonGreen,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Obx(
+                        () => Container(
+                          height: 360,
+                          decoration: BoxDecoration(
+                            color: appController.isDarkModeOn.value
+                                ? ColorConstants.grey800
+                                : Colors.white,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Column(
+                            children: [
+                              Expanded(
+                                child: controller.isChecked.value
+                                    ? Scrollbar(
+                                        child: ListView.builder(
+                                          itemExtent: 30,
+                                          padding:
+                                              const EdgeInsets.only(bottom: 10),
+                                          itemCount:
+                                              controller.listItems.length,
+                                          itemBuilder: (BuildContext context,
+                                              int index) {
+                                            return Obx(
+                                              () => ListTile(
+                                                title: Text(
+                                                  controller.listItems[index],
+                                                  style: controller.styleFont
+                                                              .value ==
+                                                          ''
+                                                      ? CustomTextStyles
+                                                          .labelBlack500Size16Fw500
+                                                      : GoogleFonts.getFont(
+                                                          controller
+                                                              .styleFont.value,
+                                                        ),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      )
+                                    : Scrollbar(
+                                        child: SingleChildScrollView(
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Align(
+                                              alignment: Alignment.topLeft,
+                                              child: Text(
+                                                controller.textRow.value,
                                                 style: controller
                                                             .styleFont.value ==
                                                         ''
@@ -213,90 +247,69 @@ class HomeScreen extends GetView<HomeController> {
                                                       ),
                                               ),
                                             ),
-                                          );
-                                        },
-                                      ),
-                                    )
-                                  : Scrollbar(
-                                      child: SingleChildScrollView(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Align(
-                                            alignment: Alignment.topLeft,
-                                            child: Text(
-                                              controller.textRow.value,
-                                              style: controller
-                                                          .styleFont.value ==
-                                                      ''
-                                                  ? CustomTextStyles
-                                                      .labelBlack500Size16Fw500
-                                                  : GoogleFonts.getFont(
-                                                      controller
-                                                          .styleFont.value,
-                                                    ),
-                                            ),
                                           ),
                                         ),
                                       ),
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: buildButton(
+                                      icon: Icons.copy,
+                                      text: ConstantsCommon.copy.tr,
+                                      onPressed: () {
+                                        String concatenatedText =
+                                            controller.listItems.join(" ");
+                                        if (concatenatedText.isNotEmpty) {
+                                          controller.copyText(concatenatedText);
+                                        }
+                                      },
+                                      borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(15)),
                                     ),
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: buildButton(
-                                    icon: Icons.copy,
-                                    text: ConstantsCommon.copy.tr,
-                                    onPressed: () {
-                                      String concatenatedText =
-                                          controller.listItems.join(" ");
-                                      if (concatenatedText.isNotEmpty) {
-                                        controller.copyText(concatenatedText);
-                                      }
-                                    },
-                                    borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(15)),
                                   ),
-                                ),
-                                Expanded(
-                                  child: buildButton(
-                                    icon: Icons.share,
-                                    text: ConstantsCommon.share.tr,
-                                    onPressed: () {
-                                      String concatenatedText =
-                                          controller.listItems.join(" ");
-                                      if (concatenatedText.isNotEmpty)
-                                        Share.share(concatenatedText);
-                                    },
+                                  Expanded(
+                                    child: buildButton(
+                                      icon: Icons.share,
+                                      text: ConstantsCommon.share.tr,
+                                      onPressed: () {
+                                        String concatenatedText =
+                                            controller.listItems.join(" ");
+                                        if (concatenatedText.isNotEmpty)
+                                          Share.share(concatenatedText);
+                                      },
+                                    ),
                                   ),
-                                ),
-                                Expanded(
-                                  child: buildButton(
-                                    icon: Icons.brush_outlined,
-                                    text: ConstantsCommon.stylize.tr,
-                                    onPressed: () {
-                                      if (controller.listItems.isNotEmpty) {
-                                        Get.toNamed(
-                                          Routes.STYLIZE_SCREEN,
-                                          arguments: controller.listItems[0],
-                                        );
-                                      }
-                                    },
-                                    borderRadius: BorderRadius.only(
-                                        bottomRight: Radius.circular(15)),
+                                  Expanded(
+                                    child: buildButton(
+                                      icon: Icons.brush_outlined,
+                                      text: ConstantsCommon.stylize.tr,
+                                      onPressed: () {
+                                        if (controller.listItems.isNotEmpty) {
+                                          Get.toNamed(
+                                            Routes.STYLIZE_SCREEN,
+                                            arguments: controller.listItems[0],
+                                          );
+                                          FocusScope.of(context).unfocus();
+                                        }
+                                      },
+                                      borderRadius: BorderRadius.only(
+                                          bottomRight: Radius.circular(15)),
+                                    ),
                                   ),
-                                ),
-                              ],
-                            )
-                          ],
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-            Align(alignment: Alignment.bottomCenter, child: isShowAdsNative())
-          ],
+              Align(alignment: Alignment.bottomCenter, child: isShowAdsNative())
+            ],
+          ),
         ),
       ),
     );
@@ -334,7 +347,7 @@ class HomeScreen extends GetView<HomeController> {
           borderRadius: borderRadius,
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4.0),
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

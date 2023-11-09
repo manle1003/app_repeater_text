@@ -34,7 +34,16 @@ class CustomTextStyles {
           18,
         ),
       );
-
+  static get labelBlack500Size18Fw400 =>
+      theme.textTheme.labelLarge!.inter.copyWith(
+        color: appController.isDarkModeOn.value
+            ? appTheme.whiteA700
+            : appTheme.black500,
+        fontSize: getFontSize(
+          18,
+        ),
+        fontWeight: FontWeight.w400,
+      );
   static get labelGray600Size18Fw600 =>
       theme.textTheme.labelLarge!.inter.copyWith(
         color: appController.isDarkModeOn.value
@@ -739,9 +748,7 @@ class CustomTextStyles {
       );
   static get labelWhite700Size18Fw600 =>
       theme.textTheme.labelLarge!.inter.copyWith(
-        color: appController.isDarkModeOn.value
-            ? appTheme.black500
-            : appTheme.whiteA700,
+        color: appTheme.whiteA700,
         fontSize: getFontSize(
           22,
         ),

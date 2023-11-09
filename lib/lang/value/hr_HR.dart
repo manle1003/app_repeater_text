@@ -24,6 +24,7 @@ const Map<String, String> hr = {
   'system': 'Sustav',
   'changeLanguage': 'Promijeni jezik',
   'upgrade': 'Ažuriraj',
+  'policy': 'Politika',
 
   // About app
   'textLooper': 'Petlja teksta',

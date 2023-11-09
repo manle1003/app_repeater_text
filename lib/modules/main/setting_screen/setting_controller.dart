@@ -9,6 +9,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class SettingController extends GetxController {
   final RxBool isCheckTheme = false.obs;
+  final RxBool isCheckDarkModeDisplay = false.obs;
   final RxBool isCheckVibration = false.obs;
   final RxBool isChecked = false.obs;
   final RxBool isCheckedRemoveAds = false.obs;
@@ -27,17 +28,17 @@ class SettingController extends GetxController {
     ColorConstants.purpleRewardColor,
   ].obs;
   final TextEditingController removeAdsController = TextEditingController();
-
   @override
   void onInit() {
     getVersionCode();
     getColor();
     getListCheckStatus();
     getRemoveAds();
+    setDefaultDecoration();
     super.onInit();
   }
 
-  String versionCode = '';
+  RxString versionCode = ''.obs;
   var scaffoldSettingKey = GlobalKey<ScaffoldState>();
   final RxList<bool> listCheckStatus =
       [true, false, false, false, false, false, false].obs;
@@ -73,7 +74,7 @@ class SettingController extends GetxController {
 
   void getVersionCode() {
     PackageInfo.fromPlatform().then((PackageInfo packageInfo) {
-      versionCode = packageInfo.version;
+      versionCode.value = packageInfo.version;
     });
   }
 

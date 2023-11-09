@@ -24,6 +24,7 @@ const Map<String, String> pl = {
   'system': 'System',
   'changeLanguage': 'Zmień język',
   'upgrade': 'Aktualizacja',
+  'policy': 'Polityka',
 
   // About app
   'textLooper': 'Pętla tekstu',

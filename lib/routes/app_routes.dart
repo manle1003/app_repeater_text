@@ -22,5 +22,6 @@ abstract class Routes {
   static const CODE93_SCREEN = '/code93_screen';
   static const CODE128_SCREEN = '/code128_screen';
   static const STYLIZE_SCREEN = '/stylize_screen';
+  static const APP_IN_HOUSE = '/app_in_house';
   static const CHANGE_LANGUAGE = '/change_language';
 }

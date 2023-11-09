@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_base/app_controller.dart';
+import 'package:flutter_getx_base/modules/main/components/drawer.dart';
+import 'package:flutter_getx_base/modules/main/home_controller.dart';
 import 'package:flutter_getx_base/modules/main/setting_screen/setting_controller.dart';
 import 'package:flutter_getx_base/shared/constants/colors.dart';
 import 'package:flutter_getx_base/theme/theme_helper.dart';
@@ -42,384 +44,398 @@ class _PaymentScreenState extends State<PaymentScreen> {
 
   final AppController appController = Get.find();
   final SettingController settingController = Get.find();
+  final HomeController homeController = Get.put(HomeController());
+  final bool isCheckPayment = Get.arguments;
 
   @override
   Widget build(BuildContext context) {
     final _backgroundColor = appController.isDarkModeOn.value
         ? Color(0xFF233142)
-        : settingController.isCheckColors.value;
+        : ColorConstants.backgroundColorButtonGreen;
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
+        drawer: DrawerBarScreen(),
         resizeToAvoidBottomInset: true,
-        body: Stack(
-          children: [
-            SingleChildScrollView(
-              padding: EdgeInsets.only(bottom: 80),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 220,
-                    width: double.infinity,
-                    child: Stack(
-                      children: [
-                        WaveWidget(
-                          config: CustomConfig(
-                            colors: _colors,
-                            durations: _durations,
-                            heightPercentages: _heightPercentages,
+        body: Obx(
+          () => Stack(
+            children: [
+              SingleChildScrollView(
+                padding: EdgeInsets.only(bottom: 80),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 220,
+                      width: double.infinity,
+                      child: Stack(
+                        children: [
+                          WaveWidget(
+                            config: CustomConfig(
+                              colors: _colors,
+                              durations: _durations,
+                              heightPercentages: _heightPercentages,
+                            ),
+                            backgroundColor: _backgroundColor,
+                            size: Size(double.infinity, double.infinity),
+                            waveAmplitude: 0,
                           ),
-                          backgroundColor: _backgroundColor,
-                          size: Size(double.infinity, double.infinity),
-                          waveAmplitude: 0,
-                        ),
-                        Positioned(
-                          top: 40,
-                          left: 10,
-                          right: 10,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              IconButton(
-                                onPressed: () =>
-                                    Get.offAllNamed(Routes.SETTING_SCREEN),
-                                icon: Icon(
-                                  Icons.arrow_back_ios,
-                                  color: Colors.white,
+                          Positioned(
+                            top: 40,
+                            left: 10,
+                            right: 10,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                isCheckPayment
+                                    ? IconButton(
+                                        onPressed: () => Get.offAllNamed(
+                                            Routes.SETTING_SCREEN),
+                                        icon: Icon(
+                                          Icons.arrow_back_ios,
+                                          color: Colors.white,
+                                        ),
+                                      )
+                                    : IconButton(
+                                        onPressed: () =>
+                                            Get.offAllNamed(Routes.HOME),
+                                        icon: Icon(
+                                          Icons.arrow_back_ios,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                SizedBox(
+                                  height: 6,
                                 ),
-                              ),
-                              SizedBox(
-                                height: 6,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: Text(
-                                  'Easy QR Scanner and Generator',
-                                  style: TextStyle(
-                                    fontSize: 24,
-                                    color: appTheme.gray100,
-                                    fontWeight: FontWeight.w500,
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 20),
+                                  child: Text(
+                                    'Text Looper',
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      color: appTheme.gray100,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                height: 6,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: Text(
-                                  'Upgrade to Pro Version and Enjoy More Benefits!'
-                                      .tr,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: appTheme.gray100,
-                                    fontWeight: FontWeight.w500,
+                                SizedBox(
+                                  height: 6,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 20),
+                                  child: Text(
+                                    'Upgrade to Pro Version and Enjoy More Benefits!'
+                                        .tr,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: appTheme.gray100,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                            flex: 1,
+                            child: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  isCheckedMonth = false;
+                                  isCheckedLife = false;
+                                  isCheckedYear = true;
+                                  totalPrice = '${'upgradeNow'.tr} \$8.99';
+                                });
+                              },
+                              child: _pakageCart(
+                                context,
+                                'Remove Ads'.tr,
+                                '\$8.99',
+                                'one-off'.tr,
+                                isCheckedYear,
+                              ),
+                            )),
+                        Expanded(
                           flex: 1,
                           child: GestureDetector(
                             onTap: () {
                               setState(() {
                                 isCheckedMonth = false;
-                                isCheckedLife = false;
-                                isCheckedYear = true;
-                                totalPrice = '${'upgradeNow'.tr} \$8.99';
+                                isCheckedLife = true;
+                                isCheckedYear = false;
+                                totalPrice =
+                                    settingController.isCheckedRemoveAds.value
+                                        ? 'freeVersion'.tr
+                                        : 'Promote code'.tr;
                               });
                             },
                             child: _pakageCart(
                               context,
-                              'Remove Ads'.tr,
-                              '\$8.99',
+                              'Promote code'.tr,
+                              'free'.tr,
                               'one-off'.tr,
-                              isCheckedYear,
+                              isCheckedLife,
                             ),
-                          )),
-                      Expanded(
-                        flex: 1,
-                        child: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              isCheckedMonth = false;
-                              isCheckedLife = true;
-                              isCheckedYear = false;
-                              totalPrice =
-                                  settingController.isCheckedRemoveAds.value
-                                      ? 'freeVersion'.tr
-                                      : 'Promote code'.tr;
-                            });
-                          },
-                          child: _pakageCart(
-                            context,
-                            'Promote code'.tr,
-                            'free'.tr,
-                            'one-off'.tr,
-                            isCheckedLife,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  // Padding(
-                  //   padding: const EdgeInsets.symmetric(horizontal: 40),
-                  //   child: Text(
-                  //     'Voted best card scanner app'.tr,
-                  //     style: TextStyle(
-                  //       fontSize: 16,
-                  //       color: appController.isDarkModeOn.value
-                  //           ? Colors.white
-                  //           : appTheme.black900,
-                  //       fontWeight: FontWeight.w500,
-                  //     ),
-                  //     textAlign: TextAlign.center,
-                  //   ),
-                  // ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  SizedBox(
-                    height: 200,
-                    width: double.infinity,
-                    child: Stack(
-                      children: [
-                        WaveWidget(
-                          config: CustomConfig(
-                            colors: _colors,
-                            durations: _durations,
-                            heightPercentages: _heightPercentages,
-                          ),
-                          backgroundColor: _backgroundColor,
-                          size: Size(double.infinity, double.infinity),
-                          waveAmplitude: 0,
-                        ),
-                        Positioned(
-                          top: 40,
-                          left: 0,
-                          right: 0,
-                          child: Column(
-                            children: [
-                              Text(
-                                'Experience the best app without ads'.tr,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: appTheme.gray100,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 6,
-                              ),
-                              Text(
-                                'Scan QR Code users'.tr,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: appTheme.gray100,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 32,
-                              ),
-                              Text(
-                                '5.0',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: appTheme.gray100,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 30,
-                                child: OverflowBox(
-                                  minHeight: 170,
-                                  maxHeight: 170,
-                                  child:
-                                      Lottie.asset('assets/icons/rating.json'),
-                                ),
-                              ),
-                            ],
                           ),
                         ),
                       ],
                     ),
-                  ),
-                  SizedBox(
-                    height: 32,
-                  ),
-                  Text(
-                    'What you get'.tr,
-                    style: TextStyle(
-                      fontSize: 22,
-                      color: appController.isDarkModeOn.value
-                          ? Colors.white
-                          : appTheme.gray600,
-                      fontWeight: FontWeight.w500,
+                    SizedBox(
+                      height: 16,
                     ),
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  itemPaymentWidget(
-                      'Scan QR Code'.tr,
-                      ColorConstants.backgroundColorButtonGreen,
-                      'Unlimited'.tr),
-                  itemPaymentWidget('Ads', appTheme.whiteA700, 'Free'.tr),
-                  // itemPaymentWidget('Integations',
-                  //     ColorConstants.backgroundColorButtonGreen, 'Unlimited'),
-                  // itemPaymentWidget('Team sharing', appTheme.white),
-                  // itemPaymentWidget(
-                  //     'Save to contacts'.tr,
-                  //     ColorConstants.backgroundColorButtonGreen,
-                  //     'Unlimited'.tr),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(horizontal: 40),
+                    //   child: Text(
+                    //     'Voted best card scanner app'.tr,
+                    //     style: TextStyle(
+                    //       fontSize: 16,
+                    //       color: appController.isDarkModeOn.value
+                    //           ? Colors.white
+                    //           : appTheme.black900,
+                    //       fontWeight: FontWeight.w500,
+                    //     ),
+                    //     textAlign: TextAlign.center,
+                    //   ),
+                    // ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    SizedBox(
+                      height: 200,
+                      width: double.infinity,
+                      child: Stack(
                         children: [
-                          _ratingCard(
-                            context,
-                            'assets/icons/imag_duong.jpeg',
-                            'Kevin',
-                            "commentFirst".tr,
+                          WaveWidget(
+                            config: CustomConfig(
+                              colors: _colors,
+                              durations: _durations,
+                              heightPercentages: _heightPercentages,
+                            ),
+                            backgroundColor: _backgroundColor,
+                            size: Size(double.infinity, double.infinity),
+                            waveAmplitude: 0,
                           ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          _ratingCard(
-                            context,
-                            'assets/icons/imag_johnny.jpeg',
-                            'Peter',
-                            "commentTwo".tr,
-                          ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          _ratingCard(
-                            context,
-                            'assets/icons/imag_quan.png',
-                            'Mari',
-                            "commentThree".tr,
-                          ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          _ratingCard(
-                            context,
-                            'assets/icons/image_david.jpeg',
-                            'Johny',
-                            "commentFor".tr,
-                          ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          _ratingCard(
-                            context,
-                            'assets/icons/image_david.jpeg',
-                            'David',
-                            "commentFive".tr,
+                          Positioned(
+                            top: 40,
+                            left: 0,
+                            right: 0,
+                            child: Column(
+                              children: [
+                                Text(
+                                  'Experience the best app without ads'.tr,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: appTheme.gray100,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 6,
+                                ),
+                                Text(
+                                  'Text Looper',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: appTheme.gray100,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 32,
+                                ),
+                                Text(
+                                  '5.0',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    color: appTheme.gray100,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 30,
+                                  child: OverflowBox(
+                                    minHeight: 170,
+                                    maxHeight: 170,
+                                    child: Lottie.asset(
+                                        'assets/icons/rating.json'),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 48,
-                  )
-                ],
-              ),
-            ),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: Container(
-                padding: EdgeInsets.only(
-                  top: 20,
-                  bottom: 48,
-                  left: 32,
-                  right: 32,
-                ),
-                decoration: BoxDecoration(
-                  color: appController.isDarkModeOn.value
-                      ? appTheme.gray200
-                      : appTheme.whiteA700,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10),
-                  ),
-                  border: Border.all(
-                    width: 1.4,
-                    color: appTheme.gray200.withOpacity(.1),
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.2),
-                      spreadRadius: 1,
-                      blurRadius: 8,
-                      offset: Offset(0, 4),
+                    SizedBox(
+                      height: 32,
                     ),
+                    Text(
+                      'What you get'.tr,
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: appController.isDarkModeOn.value
+                            ? Colors.white
+                            : appTheme.gray600,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    itemPaymentWidget(
+                        'Scan QR Code'.tr,
+                        ColorConstants.backgroundColorButtonGreen,
+                        'Unlimited'.tr),
+                    itemPaymentWidget('Ads', appTheme.whiteA700, 'Free'.tr),
+                    // itemPaymentWidget('Integations',
+                    //     ColorConstants.backgroundColorButtonGreen, 'Unlimited'),
+                    // itemPaymentWidget('Team sharing', appTheme.white),
+                    // itemPaymentWidget(
+                    //     'Save to contacts'.tr,
+                    //     ColorConstants.backgroundColorButtonGreen,
+                    //     'Unlimited'.tr),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            _ratingCard(
+                              context,
+                              'assets/icons/imag_duong.jpeg',
+                              'Kevin',
+                              "commentFirst".tr,
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            _ratingCard(
+                              context,
+                              'assets/icons/imag_johnny.jpeg',
+                              'Peter',
+                              "commentTwo".tr,
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            _ratingCard(
+                              context,
+                              'assets/icons/imag_quan.png',
+                              'Mari',
+                              "commentThree".tr,
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            _ratingCard(
+                              context,
+                              'assets/icons/image_david.jpeg',
+                              'Johny',
+                              "commentFor".tr,
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            _ratingCard(
+                              context,
+                              'assets/icons/image_david.jpeg',
+                              'David',
+                              "commentFive".tr,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 48,
+                    )
                   ],
                 ),
-                child: GestureDetector(
-                  onTap: () {
-                    isCheckedYear
-                        ? settingController.launchURL(
-                            'https://play.google.com/store/apps/details?id=com.pixel.codescannerpro')
-                        : showDialog(
-                            context: context,
-                            builder: (context) {
-                              return ShowDialogUpgrade(
-                                codeController:
-                                    settingController.removeAdsController,
-                                // themeMode: themeMode,
-                                constGrey: Colors.grey,
-                                hiddenTextField: true,
-                              );
-                            },
-                          );
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: appController.isDarkModeOn.value
-                          ? Color(0xFF233142)
-                          : ColorConstants.backgroundColorButtonGreen,
+              ),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                  padding: EdgeInsets.only(
+                    top: 20,
+                    bottom: 48,
+                    left: 32,
+                    right: 32,
+                  ),
+                  decoration: BoxDecoration(
+                    color: appController.isDarkModeOn.value
+                        ? appTheme.gray200
+                        : appTheme.whiteA700,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10),
                     ),
-                    child: Center(
-                      child: Text(
-                        totalPrice,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            color: appTheme.whiteA700),
+                    border: Border.all(
+                      width: 1.4,
+                      color: appTheme.gray200.withOpacity(.1),
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.2),
+                        spreadRadius: 1,
+                        blurRadius: 8,
+                        offset: Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: GestureDetector(
+                    onTap: () {
+                      isCheckedYear
+                          ? settingController.launchURL(
+                              'https://play.google.com/store/apps/details?id=com.pixel.codescannerpro')
+                          : showDialog(
+                              context: context,
+                              builder: (context) {
+                                return ShowDialogUpgrade(
+                                  codeController:
+                                      settingController.removeAdsController,
+                                  // themeMode: themeMode,
+                                  constGrey: Colors.grey,
+                                  hiddenTextField: true,
+                                );
+                              },
+                            );
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: appController.isDarkModeOn.value
+                            ? Color(0xFF233142)
+                            : ColorConstants.backgroundColorButtonGreen,
+                      ),
+                      child: Center(
+                        child: Text(
+                          totalPrice,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              color: appTheme.whiteA700),
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

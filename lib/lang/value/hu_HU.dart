@@ -24,6 +24,7 @@ const Map<String, String> hu = {
   'system': 'Rendszer',
   'changeLanguage': 'Nyelv módosítása',
   'upgrade': 'Frissítés',
+  'policy': 'Politika',
 
   // About app
   'textLooper': 'Szövegcsináló',
