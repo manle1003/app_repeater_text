@@ -22,7 +22,6 @@ import '../../../shared/widgets/show_dialog_upgrade.dart';
 import '../../../theme/theme_helper.dart';
 
 class SettingScreen extends GetView<SettingController> {
-  final TextEditingController _upgradeProController = TextEditingController();
   final AppController appController = Get.find();
 
   @override
@@ -96,35 +95,8 @@ class SettingScreen extends GetView<SettingController> {
                       ),
                       SizedBox(height: 24),
                       BuildSettingsGroup(
-                        settingsGroupTitle: ConstantsCommon.theme.tr,
+                        settingsGroupTitle: ConstantsCommon.setting.tr,
                         items: [
-                          BuildSettingsItem(
-                            imageAsset: ImageConstant.iconVibration,
-                            widgetTitle: Text(
-                              ConstantsCommon.vibrations.tr,
-                              style: CustomTextStyles.labelGray600Size18Fw600,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            trailing: Obx(
-                              () => Theme(
-                                data: ThemeData(
-                                  unselectedWidgetColor:
-                                      controller.isCheckColors.value,
-                                ),
-                                child: Checkbox.adaptive(
-                                  value: controller.isChecked.value,
-                                  onChanged: (bool? value) {
-                                    controller.isChecked.value = value!;
-                                    controller.isCheckVibration.value =
-                                        controller.isChecked.value;
-                                  },
-                                  activeColor: controller.isCheckColors.value,
-                                  checkColor: ColorConstants.white,
-                                ),
-                              ),
-                            ),
-                          ),
                           BuildSettingsItem(
                             onTap: () {},
                             // Get.toNamed(Routes.EDIT_PROFILE,
@@ -152,11 +124,6 @@ class SettingScreen extends GetView<SettingController> {
                               ),
                             ),
                           ),
-                        ],
-                      ),
-                      BuildSettingsGroup(
-                        settingsGroupTitle: ConstantsCommon.system.tr,
-                        items: [
                           BuildSettingsItem(
                             onTap: () {
                               Get.toNamed(Routes.CHANGE_LANGUAGE);
@@ -192,69 +159,79 @@ class SettingScreen extends GetView<SettingController> {
                             ),
                             imageAsset: ImageConstant.iconAboutUs,
                             widgetTitle: Text(
-                              ConstantsCommon.textLooper.tr,
+                              ConstantsCommon.aboutUs.tr,
                               style: CustomTextStyles.labelGray600Size18Fw600,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
-                          ),
-                          BuildSettingsItem(
-                            onTap: () {
-                              controller.isCheckedRemoveAds.value
-                                  ? showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        return ShowDialogUpgrade(
-                                          codeController:
-                                              controller.removeAdsController,
-                                          // themeMode: themeMode,
-                                          constGrey: Colors.grey,
-                                          hiddenTextField: false,
-                                        );
-                                      },
-                                    )
-                                  : Get.offAllNamed(Routes.PAYMENT_SCREEN);
-                            },
-                            onLongPress: controller.isCheckedRemoveAds.value
-                                ? () => showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        return ShowDialogUpgrade(
-                                          codeController: _upgradeProController,
-                                          constGrey: Colors.grey,
-                                          hiddenTextField: false,
-                                        );
-                                      },
-                                    )
-                                : null,
-                            imageAsset: controller.isCheckedRemoveAds.value
-                                ? 'assets/icons/ic_scan_pro.svg'
-                                : ImageConstant.iconUpgrade,
-                            widgetTitle: Text(
-                              controller.isCheckedRemoveAds.value
-                                  ? 'Easy QR Scanner Pro'
-                                  : ConstantsCommon.upgrade.tr,
-                              style: CustomTextStyles.labelGray600Size18Fw600,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            trailing: controller.isCheckedRemoveAds.value
-                                ? Lottie.asset(
-                                    'assets/icons/pro_version.json',
-                                    width: 48,
-                                    height: 48,
-                                  )
-                                : SvgPicture.asset(
-                                    ImageConstant.iconArrowRight,
-                                    color: appController.isDarkModeOn.value
-                                        ? appTheme.whiteA700
-                                        : appTheme.gray600,
-                                    width: (24),
-                                    height: (24),
-                                  ),
                           ),
                         ],
                       ),
+                      // BuildSettingsGroup(
+                      //   items: [
+
+                      //     // BuildSettingsItem(
+                      //     //   onTap: () {
+                      //     //     controller.isCheckedRemoveAds.value
+                      //     //         ? showDialog(
+                      //     //             context: context,
+                      //     //             builder: (context) {
+                      //     //               return ShowDialogUpgrade(
+                      //     //                 codeController:
+                      //     //                     controller.removeAdsController,
+                      //     //                 // themeMode: themeMode,
+                      //     //                 constGrey: Colors.grey,
+                      //     //                 hiddenTextField: false,
+                      //     //               );
+                      //     //             },
+                      //     //           )
+                      //     //         : Get.offAllNamed(
+                      //     //             Routes.PAYMENT_SCREEN,
+                      //     //             arguments: true,
+                      //     //           );
+                      //     //   },
+                      //     //   onLongPress: controller.isCheckedRemoveAds.value
+                      //     //       ? () => showDialog(
+                      //     //             context: context,
+                      //     //             builder: (context) {
+                      //     //               return ShowDialogUpgrade(
+                      //     //                 codeController:
+                      //     //                     controller.removeAdsController,
+                      //     //                 // themeMode: themeMode,
+                      //     //                 constGrey: Colors.grey,
+                      //     //                 hiddenTextField: false,
+                      //     //               );
+                      //     //             },
+                      //     //           )
+                      //     //       : null,
+                      //     //   imageAsset: controller.isCheckedRemoveAds.value
+                      //     //       ? 'assets/icons/ic_text_looper.svg'
+                      //     //       : ImageConstant.iconUpgrade,
+                      //     //   widgetTitle: Text(
+                      //     //     controller.isCheckedRemoveAds.value
+                      //     //         ? 'Text Looper'
+                      //     //         : ConstantsCommon.upgrade.tr,
+                      //     //     style: CustomTextStyles.labelGray600Size18Fw600,
+                      //     //     maxLines: 1,
+                      //     //     overflow: TextOverflow.ellipsis,
+                      //     //   ),
+                      //     //   trailing: controller.isCheckedRemoveAds.value
+                      //     //       ? Lottie.asset(
+                      //     //           'assets/icons/pro_version.json',
+                      //     //           width: 48,
+                      //     //           height: 48,
+                      //     //         )
+                      //     //       : SvgPicture.asset(
+                      //     //           ImageConstant.iconArrowRight,
+                      //     //           color: appController.isDarkModeOn.value
+                      //     //               ? appTheme.whiteA700
+                      //     //               : appTheme.gray600,
+                      //     //           width: (24),
+                      //     //           height: (24),
+                      //     //         ),
+                      //     // ),
+                      //   ],
+                      // ),
                       SizedBox(
                         height: getSize(40),
                       )

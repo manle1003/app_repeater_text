@@ -9,6 +9,7 @@ const Map<String, String> en = {
   'share': 'Share',
   'stylize': 'Stylize',
   'copySuccess': 'Copy success!',
+  'appInHouse': 'Ads in house',
 
   //Drawer,
   'setting': 'Settings',
@@ -24,9 +25,9 @@ const Map<String, String> en = {
   'system': 'System',
   'changeLanguage': 'Change language',
   'upgrade': 'Upgrade',
+  'policy': 'Policy',
 
   //About app
-  
   'textLooper': 'Text Looper',
   "contentAboutAppFirst": "Our app, Text Looper, helps you easily create text segments that loop as desired. Just input the text and the number of repetitions, and you'll instantly have unique and creative results.",
   "keyFeature": "Key Features:",
@@ -54,10 +55,8 @@ const Map<String, String> en = {
   "Experience the best app without ads": "Experience the best app without ads",
   "freeVersion": "Free Version",
   "Upgrade to Pro Version and Enjoy More Benefits!": "Upgrade to Pro Version and Enjoy More Benefits!",
-  "appInHouse": "Advertisement",
 
   //Ads in house
-
   "description_app_01": "With lightning-fast scanning, our Barcode & QR Code Scanner app is a must-have for all Android users.",
   "description_app_02": "Easily capture and organize visit card information, enhancing your network and elevating your professional connections to new heights.",
   "description_app_03": "The visit card scanning app is the suitable solution to optimize your contact management.",

@@ -24,6 +24,7 @@ const Map<String, String> ptBR = {
   'system': 'Sistema',
   'changeLanguage': 'Mudar idioma',
   'upgrade': 'Atualizar',
+  'policy': 'Política',
 
   // About app
   'textLooper': 'Loop de Texto',

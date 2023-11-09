@@ -17,7 +17,6 @@ const Map<String, String> vi = {
   'aboutUs': 'Về chúng tôi',
   'textLooper': 'Vòng lặp văn bản',
 
-
   //Setting,
   'colorBoard': 'Bảng màu',
   'theme': 'Chủ đề',
@@ -29,6 +28,7 @@ const Map<String, String> vi = {
   "Promote code": "Mã khuyến mãi",
   "free": "Miễn phí",
   "enterCode": "Nhập mã",
+  'policy': 'Chính sách',
 
   // About App,
   'contentAboutAppFirst':
@@ -94,6 +94,6 @@ const Map<String, String> vi = {
   "inAppReview": "Đánh giá ứng dụng",
   "language": "Ngôn ngữ",
 
-   //Text Looper screen
+  //Text Looper screen
   "version": "Phiên bản",
 };

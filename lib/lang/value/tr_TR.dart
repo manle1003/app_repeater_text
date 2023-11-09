@@ -24,6 +24,7 @@ const Map<String, String> tr = {
   'system': 'Sistem',
   'changeLanguage': 'Dili değiştir',
   'upgrade': 'Yükselt',
+  'policy': 'Politika',
 
   // About app
   'textLooper': 'Metin Döngüsü',

@@ -24,6 +24,7 @@ const Map<String, String> el = {
   'system': 'Σύστημα',
   'changeLanguage': 'Αλλαγή Γλώσσας',
   'upgrade': 'Αναβάθμιση',
+  'policy': 'Πολιτική',
 
   //About app
   'textLooper': 'Προσανατολιστής Κειμένου',

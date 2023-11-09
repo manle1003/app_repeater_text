@@ -32,44 +32,71 @@ class DrawerBarScreen extends StatelessWidget {
             () => ListView(
               padding: EdgeInsets.zero,
               children: [
-                _buildListTile(
-                    0, ConstantsCommon.home.tr, 'assets/icons/scan.svg', () {
+                _buildListTile(false, 0, ConstantsCommon.home.tr,
+                    ImageConstant.iconBottomHome, () {
                   settingController.isCheckDrawer.value = 0;
                   Get.offAllNamed(Routes.HOME);
                 }),
                 Divider(height: 1, color: Colors.grey.withOpacity(.3)),
                 _buildListTile(
-                    1, ConstantsCommon.share.tr, ImageConstant.icShare, () {
+                    false, 1, ConstantsCommon.share.tr, ImageConstant.icShare,
+                    () {
                   settingController.isCheckDrawer.value = 1;
                   Share.share(
                     "I'm using this incredibly convenient Repeat Text app. You should give it a try!",
                   );
                 }),
                 Divider(height: 1, color: Colors.grey.withOpacity(.3)),
-                _buildListTile(2, ConstantsCommon.setting.tr,
-                    'assets/icons/ic_setting.svg', () {
-                  settingController.isCheckDrawer.value = 2;
-                  Get.toNamed(Routes.SETTING_SCREEN);
-                }),
-                Divider(height: 1, color: Colors.grey.withOpacity(.3)),
-                _buildListTile(3, ConstantsCommon.changeLanguage.tr,
+                _buildListTile(false, 2, ConstantsCommon.changeLanguage.tr,
                     ImageConstant.iconLanguage, () {
-                  settingController.isCheckDrawer.value = 3;
+                  settingController.isCheckDrawer.value = 2;
                   Get.offAllNamed(Routes.CHANGE_LANGUAGE);
                 }),
                 Divider(height: 1, color: Colors.grey.withOpacity(.3)),
                 _buildListTile(
-                    4, ConstantsCommon.textLooper.tr, ImageConstant.iconAboutUs,
-                    () {
-                  settingController.isCheckDrawer.value = 4;
-                  Get.offAllNamed(Routes.ABOUT_APP_SCREEN);
+                  false,
+                  3,
+                  ConstantsCommon.aboutUs.tr,
+                  ImageConstant.iconAboutUs,
+                  () {
+                    settingController.isCheckDrawer.value = 3;
+                    Get.offAllNamed(Routes.ABOUT_APP_SCREEN);
+                  },
+                ),
+                Divider(height: 1, color: Colors.grey.withOpacity(.3)),
+                _buildListTile(
+                  true,
+                  4,
+                  ConstantsCommon.darkMode.tr,
+                  ImageConstant.iconUpgrade,
+                  () {
+                    settingController.isCheckDrawer.value = 4;
+                  },
+                ),
+                Divider(height: 1, color: Colors.grey.withOpacity(.3)),
+                _buildListTile(
+                  false,
+                  5,
+                  ConstantsCommon.appInHouse.tr,
+                  'assets/icons/ic_ads.svg',
+                  () {
+                    settingController.isCheckDrawer.value = 5;
+                    Get.offAllNamed(Routes.APP_IN_HOUSE);
+                  },
+                ),
+                Divider(height: 1, color: Colors.grey.withOpacity(.3)),
+                _buildListTile(false, 6, ConstantsCommon.policy.tr,
+                    'assets/icons/ic_setting.svg', () {
+                  settingController.isCheckDrawer.value = 6;
+                  settingController
+                      .launchURL('https://sites.google.com/view/textlooper');
                 }),
-                // Divider(height: 1, color: Colors.grey.withOpacity(.3)),
-                // _buildListTile(4, ConstantsCommon.changeLanguage.tr,
-                //     'assets/icons/ic_qr_code.svg', () {
-                //   settingController.isCheckDrawer.value = 4;
-                //   Get.offAllNamed(Routes.MY_QR_CODE_SCREEN);
-                // }),
+                Divider(height: 1, color: Colors.grey.withOpacity(.3)),
+                _buildListTile(false, 7, ConstantsCommon.setting.tr,
+                    'assets/icons/ic_setting.svg', () {
+                  settingController.isCheckDrawer.value = 7;
+                  Get.toNamed(Routes.SETTING_SCREEN);
+                }),
                 // Divider(height: 1, color: Colors.grey.withOpacity(.3)),
                 // _buildListTile(5, ConstantsCommon.aboutUs.tr,
                 //     'assets/icons/ic_create_qr.svg', () {
@@ -129,7 +156,12 @@ class DrawerBarScreen extends StatelessWidget {
   }
 
   Container _buildListTile(
-      int index, String title, String iconPath, Function() function) {
+    bool isCheckDarkMode,
+    int index,
+    String title,
+    String iconPath,
+    Function() function,
+  ) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 4.0),
       child: ListTile(
@@ -154,6 +186,22 @@ class DrawerBarScreen extends StatelessWidget {
           ),
         ),
         onTap: function,
+        trailing: isCheckDarkMode
+            ? Obx(
+                () => Switch(
+                  value: appController.isDarkModeOn.value,
+                  activeTrackColor: appController.isDarkModeOn.value
+                      ? Colors.white
+                      : Colors.blueGrey,
+                  activeColor: appController.isDarkModeOn.value
+                      ? Colors.white
+                      : Colors.lightBlue,
+                  onChanged: (value) {
+                    appController.toggleDarkMode();
+                  },
+                ),
+              )
+            : SizedBox.shrink(),
       ),
     );
   }

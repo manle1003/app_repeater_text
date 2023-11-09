@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_base/models/save_item_scan_model.dart';
+import 'package:flutter_getx_base/shared/constants/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferencesManager {
@@ -180,7 +181,8 @@ class SharedPreferencesManager {
   Future<Color> loadColorFromPreferences(String key) async {
     final prefs = await SharedPreferences.getInstance();
     final colorValue = prefs.getInt(key);
-    final color = Color(colorValue ?? Colors.transparent.value);
+    final color =
+        Color(colorValue ?? ColorConstants.backgroundColorButtonGreen.value);
     return color;
   }
 

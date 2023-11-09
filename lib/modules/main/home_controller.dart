@@ -61,11 +61,12 @@ class HomeController extends GetxController {
     if (textLooperFormKey.currentState!.validate()) {
       countItems.value = int.tryParse(countText.text) ?? 0;
       if (countItems.value < 0 || countItems.value > 1000) countItems.value = 0;
+      String textField = fieldText.text.trim();
       listItems.value =
-          List<String>.generate(countItems.value, (index) => fieldText.text);
+          List<String>.generate(countItems.value, (index) => textField.trim());
       textRow.value = '';
       for (var i = 0; i < countItems.value; i++) {
-        textRow.value += '${fieldText.text} ';
+        textRow.value += '${fieldText.text.trim()} ';
       }
     }
   }
@@ -77,6 +78,7 @@ class HomeController extends GetxController {
   void clearText() {
     fieldText.clear();
     listItems.clear();
+    textRow.value = '';
   }
 
   NativeAd isShowAdsNative() {

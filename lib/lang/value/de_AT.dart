@@ -24,6 +24,7 @@ const Map<String, String> de_AT = {
   'system': 'System',
   'changeLanguage': 'Sprache ändern',
   'upgrade': 'Aktualisieren',
+  'policy': 'Politik',
 
   //About app
 

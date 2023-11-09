@@ -24,6 +24,7 @@ const Map<String, String> de = {
   'system': 'System',
   'changeLanguage': 'Sprache ändern',
   'upgrade': 'Aktualisieren',
+  'policy': 'Politik',
 
   //About app
 
@@ -87,6 +88,6 @@ const Map<String, String> de = {
   "inAppReview": "App-Bewertung",
   "language": "Sprache",
 
-   //Text Looper screen
+  //Text Looper screen
   "version": "Version",
 };

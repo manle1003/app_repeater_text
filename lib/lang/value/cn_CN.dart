@@ -24,6 +24,7 @@ const Map<String, String> cn = {
   'system': '系统',
   'changeLanguage': '更改语言',
   'upgrade': '升级',
+  'policy': '政策',
 
   //About app
 

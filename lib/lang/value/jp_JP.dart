@@ -24,6 +24,7 @@ const Map<String, String> jp = {
   'system': 'システム',
   'changeLanguage': '言語を変更',
   'upgrade': 'アップグレード',
+  'policy': 'ポリシー',
 
   // About app
   'textLooper': 'テキストルーパー',

@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import '../../../app_controller.dart';
 import '../setting_screen/setting_controller.dart';
 
 class StylizeScreen extends StatefulWidget {
@@ -20,16 +21,19 @@ class _StylizeScreenState extends State<StylizeScreen> {
   final String text = Get.arguments;
 
   final SettingController settingController = Get.find();
+  final AppController appController = Get.find();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: appController.isDarkModeOn.value
+            ? Color(0xFF233142)
+            : settingController.isCheckColors.value,
         title: Text(
           ConstantsCommon.stylize.tr,
           style: CustomTextStyles.labelWhite700Size18Fw600,
         ),
-        backgroundColor: ColorConstants.backgroundColorButtonGreen,
         centerTitle: true,
       ),
       body: Stack(
@@ -54,7 +58,9 @@ class _StylizeScreenState extends State<StylizeScreen> {
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
-                              color: ColorConstants.white,
+                              color: appController.isDarkModeOn.value
+                                  ? ColorConstants.grey800
+                                  : ColorConstants.white,
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),

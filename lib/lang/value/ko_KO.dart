@@ -24,6 +24,7 @@ const Map<String, String> ko = {
   'system': '시스템',
   'changeLanguage': '언어 변경',
   'upgrade': '업그레이드',
+  'policy': '정책',
 
   // About app
   'textLooper': '텍스트 루퍼',
